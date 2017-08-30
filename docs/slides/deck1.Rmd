@@ -1,0 +1,146 @@
+---
+title: "Sta112FS <br> 1 - Introduction"
+author: "Dr. Çetinkaya-Rundel"
+date: "August 29, 2017"
+output:
+  ioslides_presentation:
+    highlight: pygments
+---
+
+# Syllabus
+
+## General info
+
+Course website: http://www2.stat.duke.edu/courses/Fall17/sta112.01/
+
+## Grading {.smaller}
+
+Component             | Weight
+----------------------|----------------
+Participation         | 10%
+In class Exercises    | 10%
+Mini Homework         | 5%
+Homework              | 30%
+Midterm 1             | 15%
+Midterm 2             | 15%
+Final project         | 15%
+
+## Grading (cont.) {.smaller}
+
+- Class attendance is a firm expectation; frequent absences or tardiness 
+will be considered a legitimate cause for grade reduction.
+
+- Exact ranges for letter grades will be curved and cutoffs will be 
+determined after the final exam.
+
+- The more evidence there is that the class has mastered the material, the 
+more generous the curve will be.
+
+## Class meetings
+
+- Interactive
+
+- Learn-by-doing
+
+- Bring your laptop to class every day
+
+## Teams
+
+- Short survey and pretest to gauge your previous exposure to topics 
+relevant to the course.
+
+- Teams of 3-5 students for in-class activities and projects.
+
+## Communication
+
+Slack Demo
+
+Q: Did you get your Slack invite?
+
+## Academic integrity
+
+Duke Community Standard:
+
+- I will not lie, cheat, or steal in my academic endeavors;
+
+- I will conduct myself honorably in all my endeavors; and
+
+- I will act if the Standard is compromised.
+
+## Reusing / sharing code
+
+- A huge volume of code is available on the web to solve any number of 
+problems.
+
+- Unless I explicitly tell you not to use these resource the course’s 
+policy is that you may make use of these resources (e.g. StackOverflow) 
+but you must explicitly cite where the code was obtained from in your 
+comments.
+
+- Any recycled coded that is discovered and is not explicitly cited will 
+be treated as plagiarism.
+
+- The one exception to this rule is that you may not directly share code 
+with another team in this class, you are welcome to discuss the problems 
+together and ask for advice, but you may not send or make use of code from 
+another team.
+
+## Excused absences {.smaller}
+
+- Students who miss graded work due to a scheduled varsity trip, religious 
+holiday or short-term illness should fill out an online NOVAP, RHoliday or 
+short-term illness form respectively.
+
+- If you cannot complete an assignment on the due date due to a short-term 
+illness, you have until noon the following day to complete it at no 
+penalty, then the regular late work policy kicks in.
+
+- If you are faced with a personal or family emergency or a long-range or 
+chronic health condition that interferes with your ability to attend or 
+complete classes, you should contact your academic dean’s office. See more 
+information on policies surrounding these conditions 
+at https://trinity.duke.edu/undergraduate/academic-policies/personal-emergencies. 
+Your academic dean can also provide more information.
+
+## Late work policy
+
+- late, but within 24 hours of due date/time: -20%
+
+- any later: no credit
+
+## Policies
+
+- Please refrain from texting or using your computer for anything other 
+than coursework during class
+
+- You must be in class on a day when you're scheduled to present, there are 
+no make ups for presentations
+
+- Regrade requests must be made within 3 days of when the assignment is 
+returned, and must be submitted in writing
+
+- Only work that is clearly assigned as team work can be completed 
+collaboratively
+
+- Use of disallowed materials during the take home exam will not be 
+tolerated
+
+# Examples
+
+## Trump tweets
+
+Text analysis of Trump's tweets confirms he writes only the (angrier) Android half
+
+[Blog post](http://varianceexplained.org/r/trump-tweets/)
+
+## Mapping Havey
+
+Map of current weather alerts for Texas Gulf Coast area, made with R pkgs leaflet & weatherAlerts
+
+[Source code](https://gist.github.com/ianmcook/c75bb81011276c23441b9048656e2e76)
+
+# Homework
+
+## Mini HW 1
+
+See syllabus on course website

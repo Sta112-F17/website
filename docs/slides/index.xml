@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slides on STA 112FS</title>
+    <link>/slides/</link>
+    <description>Recent content in Slides on STA 112FS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/slides/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sta112FS &lt;br&gt; 1 - Introduction</title>
+      <link>/slides/deck1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/slides/deck1/</guid>
+      <description>Syllabus General info Course website: http://www2.stat.duke.edu/courses/Fall17/sta112.01/
+ Grading   Component Weight    Participation 10%  In class Exercises 10%  Mini Homework 5%  Homework 30%  Midterm 1 15%  Midterm 2 15%  Final project 15%     Grading (cont.)  Class attendance is a firm expectation; frequent absences or tardiness will be considered a legitimate cause for grade reduction.
+ Exact ranges for letter grades will be curved and cutoffs will be determined after the final exam.</description>
+    </item>
+    
+  </channel>
+</rss>

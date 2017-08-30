@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STA 112FS: Data Science on STA 112FS</title>
+    <link>/</link>
+    <description>Recent content in STA 112FS: Data Science on STA 112FS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/syllabus/</link>
+      <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/syllabus/</guid>
+      <description> Date Lesson Reading Slides Assignment Exam   Aug 29 Introduction to R/RStudio       Aug 31 Introduction to git/GitHub       Sept 5 Data types and tidy data       Sept 7 Data visualization       Sept 12 Data Visualization and Exploration, Pt 1       Sept 14 Data Visualization and Exploration, Pt 2       Sept 19 Data wrangling with dplyr       Sept 21 Case study: baseball       Sept 26 The language of models       Sept 28 Recoding and transformations       Oct 3 Multiple regression       Oct 5 Model selection       Oct 10 No class: Fall break       Oct 12 Prediction and model validation       Oct 17 TBA       Oct 19 TBA       Oct 24 TBA       Oct 26 TBA       Oct 31 TBA       Nov 2 TBA       Nov 7 TBA       Nov 9 TBA       Nov 14 TBA       Nov 16 Interactive visualizations with Shiny, Pt 1       Nov 21 Interactive visualizations with Shiny, Pt 2       Nov 23 No class: Thanksgiving       Nov 28 Web scraping       Nov 30 Bayesian inference, Pt 1       Dec 5 Bayesian inference, Pt 2       Dec 7 Final project presentations       </description>
+    </item>
+    
+    <item>
+      <title>Policies</title>
+      <link>/policies/</link>
+      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/</guid>
+      <description>Class: Class time is designed to be as interactive as possible. My role as instructor is to introduce you new tools and techniques, but it is up to you to take them and make use of them. Programming is a skill that is best learned by doing, so as much as possible you will be working on a variety of tasks and activities throughout each class.
+Grading: Your final grade will be comprised of the following:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description> STA 112 </description>
+    </item>
+    
+    <item>
+      <title>Mini HW 1</title>
+      <link>/assignment/mini-hw-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/assignment/mini-hw-1/</guid>
+      <description>Due: Aug 31 at 10:05am
+Required: The following items are required pieces of the assignment. They will not be graded for accuracy, only for completion. They are meant to serve as data collection to help me understand the statistical preparation of the class and to inform team assignments.
+Survey: Getting to know you
+ Pretest: Comprehensive Assessment of Outcomes in a First Statistics course  Student ID: Net ID Access code: OYT6817SLM   Optional: Learn R module: Data basics</description>
+    </item>
+    
+    <item>
+      <title>Sta112FS &lt;br&gt; 1 - Introduction</title>
+      <link>/slides/deck1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/slides/deck1/</guid>
+      <description>Syllabus General info Course website: http://www2.stat.duke.edu/courses/Fall17/sta112.01/
+ Grading   Component Weight    Participation 10%  In class Exercises 10%  Mini Homework 5%  Homework 30%  Midterm 1 15%  Midterm 2 15%  Final project 15%     Grading (cont.)  Class attendance is a firm expectation; frequent absences or tardiness will be considered a legitimate cause for grade reduction.
+ Exact ranges for letter grades will be curved and cutoffs will be determined after the final exam.</description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tools/</guid>
+      <description>GitHub     R/RStudio    GitHub is a web-based version control repository and Internet hosting service. We will be using GitHub in this course as a collaboration platform and a course management system (i.e. submit homework in GitHub as opposed to on Sakai). In order to get started, create a GitHub account, but before then, read about picking a good username. All course materials, including private repositories for students, are on the GitHub organization.</description>
+    </item>
+    
+  </channel>
+</rss>

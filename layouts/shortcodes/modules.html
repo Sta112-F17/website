@@ -1,0 +1,130 @@
+<div class="profile-tabs">
+   <div class="nav-align-center">
+      <ul class="nav nav-pills nav-pills-primary" role="tablist">
+         <li class="active">
+            <a href="#climate" role="tab" data-toggle="tab">
+            <i class="material-icons">timeline</i>
+            Climate Change
+            </a>
+         </li>
+         <li>
+            <a href="#simulation" role="tab" data-toggle="tab">
+            <i class="material-icons">bug_report</i>
+            Ecological simulation
+            </a>
+         </li>
+         <li>
+            <a href="#overfishing" role="tab" data-toggle="tab">
+            <i class="material-icons">directions_boat</i>
+            Overfishing
+            </a>
+         </li>
+         <li>
+            <a href="#spatial" role="tab" data-toggle="tab">
+            <i class="material-icons">my_location</i>
+            Spatial movement
+            </a>
+         </li>
+         <li>
+            <a href="#extinction" role="tab" data-toggle="tab">
+            <i class="material-icons">trending_down</i>
+            Mass Extinctions
+            </a>
+         </li>
+      </ul>
+      <div class="tab-content gallery">
+         <div class="tab-pane text-center active" id="climate">
+            <div class="row">
+               <div class="col-md-6">
+                  <img src="{{"/img/co2.png" | relURL }}"  class="img-rounded img-responsive img-raised">  
+               </div>
+               <div class="col-md-6">
+                  <strong>Topics</strong>:
+                  CO2 concentration,
+                  Global mean temperature,
+                  Sea level rise,
+                  Land ice sheet melt,
+                  Arctic sea ice cover
+                  <br/>  
+                  <strong>Skills</strong>:
+                  Data wrangling: plain text formats,
+                  Tidy data,
+                  Data visualization,
+                  Smoothing
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane text-center" id="simulation">
+            <div class="row">
+               <div class="col-md-6">
+                  <img src="{{"/img/chaos.png" | relURL }}"  class="img-rounded img-responsive img-raised">  
+               </div>
+               <div class="col-md-6">
+                  <strong>Topics</strong>: 
+                  Coexistence, 
+                  Bet Hedging, 
+                  Limit Cycles, 
+                  Bifurcations, 
+                  Deterministic Chaos
+                  <br/>
+                  <strong>Skills</strong>:
+                  Flow control,
+                  functions,
+                  iterators,
+                  writing R packages,
+                  testing,
+                  literate documentation
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane text-center" id="overfishing">
+            <div class="row">
+               <div class="col-md-6">
+                  <img src="{{"/img/worm2006.jpg" | relURL }}"  class="img-rounded img-responsive img-raised">  
+                  From Worm 
+                  <emph>et al.</emph>
+                  2006, <a href="https://doi.org/10.1126/science.1132294">https://doi.org/10.1126/science.1132294</a>
+               </div>
+               <div class="col-md-6">
+                  <strong>Topics</strong>: Fisheries, reproducibility, missing data, data visualization and inference
+                  <br/>
+                  <strong>Skills:</strong>:
+                  Relational databases, SQL
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane text-center" id="spatial">
+            <div class="row">
+               <div class="col-md-6">
+                  <img src="{{"/img/albatross.png" | relURL }}"  class="img-rounded img-responsive img-raised">  
+               </div>
+               <div class="col-md-6">
+                  <strong>Technologies and data formats</strong>: <a href="https://en.wikipedia.org/wiki/Simple_Features">Simple Features Access</a> (ISO 19125) (used in GIS, geojson), Spatial rasters (e.g. geotiff, netcdf), interactive mapping.
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane text-center" id="extinction">
+            <div class="row">
+               <div class="col-md-6">
+                  <img src="{{"/img/extinctions.jpg" | relURL }}"  class="img-rounded img-responsive img-raised">  
+                  From Cerbellos et al., <a href="https://doi.org/10.1126/sciadv.1400253">https://doi.org/10.1126/sciadv.1400253</a>
+               </div>
+               <div class="col-md-6">
+                  <strong>Topics</strong>: 
+                  ICUN Redlist, 
+                  Fossil record,
+                  Taxonomy,
+                  Remote and unstructured data
+                  <br/>
+                  <strong>Skills</strong>:
+                  JSON, 
+                  curl, 
+                  REST APIs, 
+                  regular expressions
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- End Profile Tabs -->
