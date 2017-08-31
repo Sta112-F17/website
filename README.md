@@ -6,7 +6,8 @@ Course website is at http://www2.stat.duke.edu/courses/Fall17/sta112.01/.
 
 # Attribution
 
-This website design is based on [ESPM-157 by Carl Boettinger](https://espm-157.carlboettiger.info/).
+- This website design is based on [ESPM-157 by Carl Boettinger](https://espm-157.carlboettiger.info/).
+- Background image is [here](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkrAAAAJDI5MmUxNzNiLWNmYjAtNDFiOC04YWRiLTQ2YjhiZGExNzY0Mw.jpg).
 
 # Notes for building the website:
 
