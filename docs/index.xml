@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/syllabus/</guid>
-      <description> Date Lesson Reading Slides Assignment Exam   Aug 29 Introduction to R/RStudio       Aug 31 Introduction to git/GitHub       Sept 5 Data types and tidy data       Sept 7 Data visualization       Sept 12 Data Visualization and Exploration, Pt 1       Sept 14 Data Visualization and Exploration, Pt 2       Sept 19 Data wrangling with dplyr       Sept 21 Case study: baseball       Sept 26 The language of models       Sept 28 Recoding and transformations       Oct 3 Multiple regression       Oct 5 Model selection       Oct 10 No class: Fall break       Oct 12 Prediction and model validation       Oct 17 TBA       Oct 19 TBA       Oct 24 TBA       Oct 26 TBA       Oct 31 TBA       Nov 2 TBA       Nov 7 TBA       Nov 9 TBA       Nov 14 TBA       Nov 16 Interactive visualizations with Shiny, Pt 1       Nov 21 Interactive visualizations with Shiny, Pt 2       Nov 23 No class: Thanksgiving       Nov 28 Web scraping       Nov 30 Bayesian inference, Pt 1       Dec 5 Bayesian inference, Pt 2       Dec 7 Final project presentations       </description>
+      <description>Note: Due dates of bigger assignments and exams will not move, however the timeline of topics might be updated throughout the semester.  Date Lesson Reading Slides Assignment Exam    Part 1: Visualizing data       Tue, Aug 29 Welcome to Data Science       Thur, Aug 31 Introduction to R/RStudio &amp;#43; git/GitHub       Tue, Sept 5 Fundamentals of data &amp;amp; data visualization       Thur, Sept 7 Mapping       Tue, Sept 12 Data Visualization and Exploration, Pt 1       Thur, Sept 14 Data Visualization and Exploration, Pt 2       Tue, Sept 19 Confounding variables and Simpson&amp;#39;s paradox       Thur, Sept 21 Case study: medical applications        Part 2: Wrangling data       Tue, Sept 26 Tidy data       Thur, Sept 28 Types of variables       Tue, Oct 3 Converting between types of variables       Thur, Oct 5 Case study: Tidy and then visualize data       Tue, Oct 10 No class: Fall break       Thur, Oct 12 Prediction and model validation        Part 3: Making rigorous conclusions       Tue, Oct 17 Linear regression       Thur, Oct 19 Multiple regression       Tue, Oct 24 Estimation via bootstrapping       Thur, Oct 26 Relationship bet.</description>
     </item>
     
     <item>
@@ -31,44 +31,12 @@ Grading: Your final grade will be comprised of the following:</description>
     </item>
     
     <item>
-      <title></title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description> STA 112 </description>
-    </item>
-    
-    <item>
-      <title>Mini HW 1</title>
-      <link>/assignment/mini-hw-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/assignment/mini-hw-1/</guid>
-      <description>Due: Aug 31 at 10:05am
-Required: The following items are required pieces of the assignment. They will not be graded for accuracy, only for completion. They are meant to serve as data collection to help me understand the statistical preparation of the class and to inform team assignments.
-Survey: Getting to know you
- Pretest: Comprehensive Assessment of Outcomes in a First Statistics course  Student ID: Net ID Access code: OYT6817SLM   Optional: Learn R module: Data basics</description>
-    </item>
-    
-    <item>
-      <title>Sta112FS &lt;br&gt; 1 - Introduction</title>
-      <link>/slides/deck1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/slides/deck1/</guid>
-      <description>Syllabus General info Course website: http://www2.stat.duke.edu/courses/Fall17/sta112.01/
- Grading   Component Weight    Participation 10%  In class Exercises 10%  Mini Homework 5%  Homework 30%  Midterm 1 15%  Midterm 2 15%  Final project 15%     Grading (cont.)  Class attendance is a firm expectation; frequent absences or tardiness will be considered a legitimate cause for grade reduction.
- Exact ranges for letter grades will be curved and cutoffs will be determined after the final exam.</description>
-    </item>
-    
-    <item>
       <title>Tools</title>
       <link>/tools/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/tools/</guid>
-      <description>GitHub     R/RStudio    GitHub is a web-based version control repository and Internet hosting service. We will be using GitHub in this course as a collaboration platform and a course management system (i.e. submit homework in GitHub as opposed to on Sakai). In order to get started, create a GitHub account, but before then, read about picking a good username. All course materials, including private repositories for students, are on the GitHub organization.</description>
+      <description>R/RStudio     GitHub     Slack    R is the statistical programming language we will learn in this class. We will interface with R using RStudio, a fully feautred IDE. Go to https://vm-manage.oit.duke.edu/ to access RStudio and log in with your Net ID.    GitHub is a web-based version control repository and Internet hosting service. We will be using GitHub in this course as a collaboration platform and a course management system (i.</description>
     </item>
     
   </channel>

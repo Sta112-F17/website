@@ -4,17 +4,20 @@ description: "Combines techniques from statistics, math, computer science, and s
 markup: "mmark"
 ---
 
+### Course info
+
 {.table .table-condensed .table-striped .text-left}
  <span></span>     | <span></span>
------------|-------------------------------------------------------------------
-Classroom  |  Perkins LINK 070 (Seminar 4)   |   
-Class meetings      |  Tue & Thu 10:05 - 11:20 AM          |
-           |                                 |
-Instructor | [Mine Çetinkaya-Rundel](http://stat.duke.edu/~mc301/) &nbsp; <a href="mailto:mine@stat.duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://twitter.com/minebocek" title="Twitter"><i class="fa fa-twitter"></i></a> &nbsp; <a href="https://github.com/mine-cetinkaya-rundel" title="GitHub"><i class="fa fa-github"></i></a> |  
-Office Hours | Mon 1 - 3 PM and Wed by appointment  |
-             |                        |
-TA         | [Kyle Burris](https://burrisk.github.io/) &nbsp; <a href="mailto:kyle.burris@duke.com" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/burrisk" title="GitHub"><i class="fa fa-github"></i></a>         |  
-Office Hours | Wed 9 - 10 AM and Fri 10 - 11 AM    |
+-----------|----------------------------------
+When       |  Tue & Thu 10:05 - 11:20am        |
+Where      |  Perkins LINK 070 (Seminar 4)   |   
+
+### Teaching team
+{.table .table-condensed .table-striped .text-left}
+<span></span>     | <span></span>     | <span></span>    | <span></span>         
+------------------|-------------------|------------------|------------------
+Instructor        | [Mine Çetinkaya-Rundel](http://stat.duke.edu/~mc301/) | <a href="mailto:mine@stat.duke.edu" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/mine-cetinkaya-rundel" title="GitHub"><i class="fa fa-github"></i></a> &nbsp; <a href="https://twitter.com/minebocek" title="Twitter"><i class="fa fa-twitter"></i></a> | OH: Mon 1 - 3pm & Wed by appointment at Old Chem 213
+TA                | [Kyle Burris](https://burrisk.github.io/) | <a href="mailto:kyle.burris@duke.com" title="email"><i class="fa fa-envelope"></i></a> &nbsp; <a href="https://github.com/burrisk" title="GitHub"><i class="fa fa-github"></i></a> | OH: Wed 9 - 10am & Fri 10 - 11am at Old Chem 211A
 
 ### Texts
 

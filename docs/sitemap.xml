@@ -13,16 +13,7 @@
   </url>
   
   <url>
-    <loc>/about/</loc>
-  </url>
-  
-  <url>
     <loc>/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/assignment/</loc>
     <priority>0</priority>
   </url>
   
@@ -32,21 +23,8 @@
   </url>
   
   <url>
-    <loc>/assignment/mini-hw-1/</loc>
-  </url>
-  
-  <url>
     <loc>/</loc>
     <lastmod>2017-04-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/slides/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/slides/deck1/</loc>
   </url>
   
   <url>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
+	<link rel="icon" sizes="76x76" href="../img/favicon.png">
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -91,37 +91,48 @@
 			<div class="container">
 		  	<div class="section text-left">
 		  	  <h2 class="title">Tools</h2>
-	            <div class="profile-tabs">
+	            
+<div class="profile-tabs">
    <div class="nav-align-center">
       <ul class="nav nav-pills nav-pills-primary" role="tablist">
          <li class="active">
+            <a href="#r" role="tab" data-toggle="tab">
+            <i class="icon-rlogo"></i>
+            R/RStudio
+            </a>
+         </li>
+         <li>
             <a href="#github" role="tab" data-toggle="tab">
             <i class="fa fa-github"></i>
             GitHub
             </a>
          </li>
-         <li>
-            <a href="#R" role="tab" data-toggle="tab">
-            <i class="icon-rlogo"></i>
-            R/RStudio
+          <li>
+            <a href="#slack" role="tab" data-toggle="tab">
+            <i class="fa fa-slack"></i>
+            Slack
             </a>
          </li>
       </ul>
       <div class="tab-content gallery">
+         <div class="tab-pane text-center active" id="r">
+            <div class="row">
+               <div class="col-md-4 col-md-offset-4">
+                 R is the statistical programming language we will learn in this class. We will interface with R using RStudio, a fully feautred IDE. Go to <a href="https://vm-manage.oit.duke.edu/">https://vm-manage.oit.duke.edu/</a> to access RStudio and log in with your Net ID.
+               </div>
+            </div>
+         </div>
          <div class="tab-pane text-center active" id="github">
             <div class="row">
                <div class="col-md-4 col-md-offset-4">
                  GitHub is a web-based version control repository and Internet hosting service. We will be using GitHub in this course as a collaboration platform and a course management system (i.e. submit homework in GitHub as opposed to on Sakai). In order to get started, create a <a href="https://github.com/"></a>GitHub account</a>, but before then, read about <a href="http://happygitwithr.com/github-acct.html#username-advice">picking a good username</a>. All course materials, including private repositories for students, are on the <a href="https://github.com/Sta112-F17">GitHub organization</a>.
-                 
-                
                </div>
             </div>
          </div>
-         <div class="tab-pane text-center" id="R">
+         <div class="tab-pane text-center" id="slack">
             <div class="row">
                <div class="col-md-4 col-md-offset-4">
-                 R is the statistical programming language we will learn in this class. We will interface with R using RStudio, a fully feautred IDE. Go to <a href="https://vm-manage.oit.duke.edu/">https://vm-manage.oit.duke.edu/</a> to access RStudio and log in with your Net ID.
-                 
+                 <a href="https://sta112f17.slack.com/">Slack</a> is the communication platform we'll use for this course. You should have received an email with an invitation link to join the course Slack. All content related course communication will happen on Slack, in the relevant channels. For personal matters (only) you can email the professor.</a>
                </div>
             </div>
          </div>
@@ -148,6 +159,13 @@
         
 
         <li>
+          <a href="https://vm-manage.oit.duke.edu/"><i class="icon-rlogo" style="font-size:150%"></i> R/RStudio</a>
+        </li>
+        
+      
+        
+
+        <li>
           <a href="https://github.com/Sta112-F17/"><i class="button-icon fa fa-2x fa-github"></i> GitHub</a>
         </li>
         
@@ -156,13 +174,6 @@
 
         <li>
           <a href="https://sta112f17.slack.com/messages"><i class="button-icon fa fa-2x fa-slack"></i> Slack</a>
-        </li>
-        
-      
-        
-
-        <li>
-          <a href="https://vm-manage.oit.duke.edu/"><i class="icon-rlogo" style="font-size:150%"></i> R/RStudio</a>
         </li>
         
       

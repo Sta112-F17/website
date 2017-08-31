@@ -69,23 +69,24 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   url = "http://stat.duke.edu/"
 [[menu.footer]]
   weight = 2
+  name = "R/RStudio"
+  pre = "<i class=\"icon-rlogo\" style=\"font-size:150%\"></i>"
+  url = "https://vm-manage.oit.duke.edu/"
+[[menu.footer]]
+  weight = 3
   identifier = "GitHub"
   name = "GitHub"
   pre = "<i class=\"button-icon fa fa-2x fa-github\"></i>"
   url = "https://github.com/Sta112-F17/"
 [[menu.footer]]
-  weight = 3
+  weight = 4
   identifier = "Slack"
   name = "Slack"
   pre = "<i class=\"button-icon fa fa-2x fa-slack\"></i>"
   url = "https://sta112f17.slack.com/messages"
-[[menu.footer]]
-  weight = 4
-  name = "R/RStudio"
-  pre = "<i class=\"icon-rlogo\" style=\"font-size:150%\"></i>"
-  url = "https://vm-manage.oit.duke.edu/"
+
 
 [params]
   dateFormat = "January 2, 2006"
   background = "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkrAAAAJDI5MmUxNzNiLWNmYjAtNDFiOC04YWRiLTQ2YjhiZGExNzY0Mw.jpg"
-
+  favicon = "img/favicon.ico"
