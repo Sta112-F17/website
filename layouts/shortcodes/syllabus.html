@@ -7,8 +7,8 @@
     <th style="width:15%;text-align:right">Date</th>
     <th style="width:55%">Lesson</th>
     <th style="width:7.5%;text-align:center">Reading</th>
-    <th style="width:7.5%;text-align:center">Slides</th>
     <th style="width:7.5%;text-align:center">Assignment</th>
+    <th style="width:7.5%;text-align:center">Slides</th>
     <th style="width:7.5%;text-align:center">Exam</th>
   </tr>
 
@@ -17,20 +17,13 @@
     <tr>
       <td align="right">{{ .date }}</td>
       <td>{{ .title }}</td>
+      
       {{ if .reading }}
-      <td align="center"><a href="{{ .reading }}">
+      <td align="center"><a href="{{ .Site.baseurl }}/reading/{{ .reading  }}">
           <i class="fa fa-book fa-lg"></i></a></td>
       {{ else }}
         <td align="center"><font color="f1f1f1">
           <i class="fa fa-book fa-lg"></i></font></td>
-      {{ end }}
-
-      {{ if .slides }}
-      <td align="center"><a href="{{ .Site.baseurl }}/slides/{{ .slides  }}">
-          <i class="fa fa-file-image-o  fa-lg"></i></a></td>
-      {{ else }}
-        <td align="center"><font color="f1f1f1">
-          <i class="fa fa-file-image-o  fa-lg"></i></font></td>
       {{ end }}
 
       {{ if .assignment }}
@@ -39,6 +32,14 @@
       {{ else }}
         <td align="center"><font color="f1f1f1">
           <i class="fa fa-keyboard-o fa-lg"></i></font></td>
+      {{ end }}
+      
+      {{ if .slides }}
+      <td align="center"><a href="{{ .Site.baseurl }}/slides/{{ .slides  }}">
+          <i class="fa fa-file-image-o  fa-lg"></i></a></td>
+      {{ else }}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-file-image-o  fa-lg"></i></font></td>
       {{ end }}
       
       {{ if .exam }}
