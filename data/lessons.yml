@@ -3,7 +3,7 @@ lessons:
   - title: "Welcome to Data Science"
     date: "Tue, Aug 29"
     slides: "01-deck.html"
-  - title: "Introduction to R/RStudio + git/GitHub"
+  - title: "Introduction to R/RStudio + git/GitHubb"
     date: "Thur, Aug 31"
     reading: ""
     assignment: "01-mini-hw.html"
