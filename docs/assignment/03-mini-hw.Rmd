@@ -1,0 +1,20 @@
+---
+title: "Mini HW 03 - Visualizing Gapminder data"
+date: "Due: Sep 7 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Complete the following tutorials:
+
+- [Visualization basics](https://tutorials.shinyapps.io/02-Vis-Basics/)
+- [Bar charts](https://tutorials.shinyapps.io/01-bar-charts/)
+- [Histograms](https://tutorials.shinyapps.io/03-histograms/)
+- [Scatterplots](https://tutorials.shinyapps.io/05-scatterplots/)
+
+We will evaluate your completion of this work with a series of questions we will ask at the beginning of the class on Thursday.

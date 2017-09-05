@@ -1,0 +1,18 @@
+---
+title: "Reading 03"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Due: 
+
+Sep 12 at 10:05am
+
+### Required:
+
+- R4DS: [Chapter 3: Data visualization](http://r4ds.had.co.nz/data-visualisation.html)
