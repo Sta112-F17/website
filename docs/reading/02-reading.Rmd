@@ -16,3 +16,6 @@ Sep 7 at 10:05am
 ### Required:
 
 - R4DS: [Chapter 3: Data visualization](http://r4ds.had.co.nz/data-visualisation.html)
+- [OpenIntro Statistics](https://drive.google.com/file/d/0B-DHaDEbiOGkc1RycUtIcUtIelE/view):
+    + Section 1.6: Examining numerical data
+    + Section 1.7: Considering categorical data

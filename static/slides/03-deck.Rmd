@@ -23,7 +23,26 @@ output:
     + Did everyone download the Slack app?
     + Did everyone adjust their Slack username to be/include their (preferred) first name?
     + Did everyone add their photo to the GitHub and Slack profiles?
-    
+
+## R in a nutshell
+
+Functions in R are often verbs, and then in parantheses are the arguments for those functions.
+
+```{r eval=FALSE}
+verb(what-you-want-to-apply-verb-to, other-arguments)
+```
+
+For example:
+
+```{r eval=FALSE}
+glimpse(gapminder)      # Glimpse into the gapminder dataset
+```
+
+```{r eval=FALSE}
+gapminder %>%           # Pipe into the next function
+  filter(year == 1952)  # Filter if year is equal to 1952
+```
+
 # Data visualization
 
 ## Data visualization
@@ -63,7 +82,7 @@ ggplot(data = [dataset], aes(x = [x-variable], y = [y-variable])) +
 - Inspired by the book **Grammar of Graphics** by Lee Wilkinson
 - `ggplot()` is the main function in ggplot2
 
-# Plotting Star Wars
+# Visualizing Star Wars
 
 ## Star Wars data {.smaller}
 
@@ -73,6 +92,20 @@ The **dplyr** package contains a dataset called `starwars`:
 library(dplyr)
 starwars
 ```
+
+## Dataset terminology {.smaller}
+
+<div class="question">
+What does each row represent? What does each column represent?
+</div>
+
+```{r message=FALSE}
+starwars
+```
+
+## Luke Skywalker
+
+![luke-skywalker](img/04/luke-skywalker.png)
 
 ## What's in the Star Wars data? {.smaller}
 
