@@ -5,7 +5,7 @@ date: "August 29, 2017"
 output:
   ioslides_presentation:
     highlight: pygments
-    logo: ~/Desktop/Teaching/sta112-f17/logo/sta112-hex.png
+    logo: img/sta112-hex.png
 ---
 
 # Syllabus
