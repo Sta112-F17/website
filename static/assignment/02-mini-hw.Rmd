@@ -1,0 +1,62 @@
+---
+title: "Mini HW 02 - Visualizing Gapminder data"
+date: "Due: Sep 5 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this assignment you will be working with data from Gapminder. This is the same dataset we used for a demo in class. In fact, you're asked to complete the same tasks we demoed in class (though we ran out of time and didn't actually complete all of them). This might seem a little redundant at first, but the goal of this assignment is to help you get comfortable with the course workflow:
+
+- Start with an assignment link that creates a repo on GitHub with starter documents and code provided by me
+- Clone this repo in RStudio
+- Make any changes needed as outlined by the tasks you need to complete for the assignment
+- Periodically commit changes (the more often the better, for example, once per each new task)
+- Push all your changes back to your GitHub repo
+
+and voila, you're done! Once you push your changes back you do not need to do anything else to "submit" your work. And you can of course push multiple times throughout the assignment. At the time of the deadline we will take whatever is in your repo and consider it your final submission, and grade the state of your work at that time (which means even if you made mistakes before then, you wouldn't be penalized for them as long as the final state of your work is correct).
+
+We walked through this process once in class, and here it is one more time:
+
+<div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/lVxVaPTeFLQ?rel=0?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+
+Now it's your turn...
+
+1. Go to [Gapminder](https://www.gapminder.org/tools/#_locale_id=en;&chart-type=bubbles) and play around with the interactive visualization tool, to get a sense of the data you'll be working with. (This tool uses a much more extensive version of the data you'll be working with.)
+
+2. Go to the #assignment-links channel on Slack and click on the link for mini-hw-02, and accept the assignment. This will create your copy of the assignment repo, with some starter documents in it. 
+
+3. Clone the repo in RStudio using New Project -> From version control -> Git... (you'll be asked for username and password)
+    - **TIP**: Edit the name of the repo to not include your username, so it only says mini-hw-02. This will keep things a bit more organized.
+
+4. Change the name in the YAML to your name (remember, keep it in quotations) and knit the document. Confirm that the output reflects your name. Go to the Git tab on RStudio and observe the diff. Then check the box next to all changed documents, write an informative commit message, commit, and then push (you'll be asked for username and password again). Once changes are successfully pushed, go back to your repo on GitHub, and confirm that the change you made has been committed.
+
+5. At this point you should be feeling pretty confident that you got the hang of this, great! So now, let's do some data analysis. I want you to examine the code given to produce the existing plots in the document. And then, make the appropriate changes listed below. Commit after each task is done with an informative commit message like "Changed year of subset" or "Changed variables plotted", etc. It's good to get into the habit of pushing regularly as well (this will be especially important for teamwork).
+    - Task 1: Subset for 1952 (instead of 2007)
+    - Task 2: Plot life expectancy (`lifeExp`) vs. population (`pop`)
+        + Hint: A vs. B means A goes on the y-axis and B goes on the x-axis.
+    - Task 3: In addition to coloring the points by continent, size the points by GPD (`gpdPercap`)
+        + Hint: Add argument `size = gdpPercap` to your plotting code
+    - Task 4: A brief (1-2 sentences only) description of what you see in the plot.
+
+6. When you're done, review the .md document on GitHub to make sure you're happy with the final state of your work. Then go get some rest!
+
+### Getting help
+
+Use the #r-help or #github-help channels on Slack to ask questions. If your question is about an error you're getting, make sure to clearly explain what generated the error as well as what the error says.
+
+You are also welcomed to discuss the homework with each other broadly (no sharing code!) as well as ask questions at office hours.
+
+### Grading
+
+Total                                                   | 5 pts
+--------------------------------------------------------|--------
+Updated name                                            | 1 pt
+Correct final plot                                      | 1 pts
+Reasonable description of relationship                  | 1 pt
+Commit after each task (at a minimum, more commits ok)  | 1 pt
+Informative commit messages                             | 1 pt
