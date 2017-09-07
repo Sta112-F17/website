@@ -238,3 +238,11 @@ What is missing in this visualization?
 
 ![yall](img/04/yalls.png)
 
+# Wrapping up
+
+## Assignment(s)
+
+- Will post instructions on caching password for GitHub, follow along, ask on Slack if you get stuck, come to OH on Monday and we can do it together
+
+- Mini Homework 04
+
