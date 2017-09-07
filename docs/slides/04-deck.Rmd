@@ -217,7 +217,7 @@ ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
 ## Hurricane Irma
 
 <div class="question">
-**TEAM:** Create a list of the variables we would need in order to produce the following map depicting where Hurricane Irma is headed. (See original at https://nyti.ms/2x7nKLD.)
+**TEAM:** Sketch what a tidy data frame that could be used to generate the following map depicting where Hurricane Irma is headed would look like, i.e. what's in the rows, and what's in the columns? (See original interactive map at https://nyti.ms/2x7nKLD.)
 </div>
 
 ![irma-headed](img/04/irma-headed.png)
