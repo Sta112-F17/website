@@ -1,0 +1,64 @@
+---
+title: "Mini HW 04 - Visualizing Pokemon"
+date: "Due: Sep 12 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A key part of [Pokémon Go](http://www.pokemongo.com/) is using evolutions to get stronger Pokémon, and a deeper understanding of evolutions is key to being the greatest Pokémon Go player of all time. The data set you will be working with for this assignment covers 75 Pokémon evolutions spread across four species. A wide set of variables are provided, allowing a deeper dive into what characteristics are important in predicting a Pokémon's final combat power (CP).
+
+The codebook can be found [here](https://www.openintro.org/stat/data/?data=pokemon).
+
+Here are the steps for getting started:
+
+- Start with an assignment link that creates a repo on GitHub with starter documents and code provided by me
+- Clone this repo in RStudio
+- Make any changes needed as outlined by the tasks you need to complete for the assignment
+- Make sure all your code chunks are informatively named, and these labels re not repeated
+- Periodically commit changes (the more often the better, for example, once per each new task)
+- Push all your changes back to your GitHub repo
+
+and voila, you're done! Once you push your changes back you do not need to do anything else to "submit" your work. And you can of course push multiple times throughout the assignment. At the time of the deadline we will take whatever is in your repo and consider it your final submission, and grade the state of your work at that time (which means even if you made mistakes before then, you wouldn't be penalized for them as long as the final state of your work is correct).
+
+Now it's your turn...
+
+1. Go to the [codebook](https://www.openintro.org/stat/data/?data=pokemon) and find out which variabkes are included in this dataset, and what they represent.
+
+2. Go to the #assignment-links channel on Slack and click on the link for mini-hw-04, and accept the assignment. This will create your copy of the assignment repo, with some starter documents in it. 
+
+3. Clone the repo in RStudio using New Project -> From version control -> Git... (you'll be asked for username and password)
+    - **TIP**: Edit the name of the repo to not include your username, so it only says 04-mini-hw-pokemon. This will keep things a bit more organized.
+
+4. Change the name in the YAML to your name (remember, keep it in quotations) and knit the document. Confirm that the output reflects your name. Go to the Git tab on RStudio and observe the diff. Then check the box next to all changed documents, write an informative commit message, commit, and then push (you'll be asked for username and password again). Once changes are successfully pushed, go back to your repo on GitHub, and confirm that the change you made has been committed.
+
+5. Data analysis: For each task, write down an interpretation of your visualization (and what it reveals about the data) in 1-2 sentences max.
+
+    - Task 1: Pick two numerical variables and use a scatterplot to visualize their relationship.
+    - Task 2: Pick a third categorical variable, and color the points on the scatterplot by levels of this variable.
+    - Task 3: Pick two categorical variables and make a bar plot that depicts the relationship between them.
+    - Task 4: Pick a numerical and a categorical variable, and construct side-by-side box plots depicting the relationship between them.
+    - Task 5: Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, and convert your side-by-side box plots from the previous task to violin plots.
+
+6. When you're done, review the .md document on GitHub to make sure you're happy with the final state of your work. Then go get some rest!
+
+### Getting help
+
+Use the #r-help or #github-help channels on Slack to ask questions. If your question is about an error you're getting, make sure to clearly explain what generated the error as well as what the error says.
+
+You are also welcomed to discuss the homework with each other broadly (no sharing code!) as well as ask questions at office hours.
+
+### Grading
+
+Total                                                   | 15 pts
+--------------------------------------------------------|--------
+Updated name                                            | 1 pt
+Correct plot for each task                              | 1 pts / task
+Reasonable interpretation for each task                 | 1 pts / task
+Informatively named code chunks                         | 2 pts
+Commit after each task (at a minimum, more commits ok)  | 1 pt
+Informative commit messages                             | 1 pt
