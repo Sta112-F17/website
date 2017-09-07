@@ -1,5 +1,5 @@
 ---
-title: "Mini HW 03 - Visualizing Gapminder data"
+title: "Mini HW 03 - Visualization tutorials"
 date: "Due: Sep 7 at 10:05am"
 output: 
   html_document: 

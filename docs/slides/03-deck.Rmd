@@ -105,7 +105,7 @@ starwars
 
 ## Luke Skywalker
 
-![luke-skywalker](img/04/luke-skywalker.png)
+![luke-skywalker](img/03/luke-skywalker.png)
 
 ## What's in the Star Wars data? {.smaller}
 
@@ -122,7 +122,7 @@ Run the following **in the Console** to view the help
 ```
 
 <center>
-![starwars-help](img/04/starwars-help.png)
+![starwars-help](img/03/starwars-help.png)
 </center>
 
 <div class="question">
@@ -168,7 +168,7 @@ ggplot(data = starwars, aes(x = height, y = mass)) +
 ```
 
 <center>
-![jabba](img/04/jabba.png)
+![jabba](img/03/jabba.png)
 <center>
 
 ## Additional variables
