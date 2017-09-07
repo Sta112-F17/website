@@ -153,7 +153,7 @@ ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
 ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
   geom_point() +
   labs(title = "Mass vs. height of Star Wars characters",
-       x = "Height (in cm)", y = "Mass (in kg)", fill = "Gender")
+       x = "Height (in cm)", y = "Mass (in kg)", color = "Gender")
 ```
 
 ## Change zooming {.smaller}
@@ -162,7 +162,7 @@ ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
 ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
   geom_point() +
   labs(title = "Mass vs. height of Star Wars characters",
-       x = "Height (in cm)", y = "Mass (in kg)", fill = "Gender") +
+       x = "Height (in cm)", y = "Mass (in kg)", color = "Gender") +
   xlim(c(100, 200)) + 
   ylim(c(40, 120))
 ```
@@ -182,7 +182,7 @@ ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
 ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
   geom_point() +
   labs(title = "Mass vs. height of Star Wars characters",
-       x = "Height (in cm)", y = "Mass (in kg)", fill = "Gender") +
+       x = "Height (in cm)", y = "Mass (in kg)", color = "Gender") +
   theme_dark()
 ```
 
@@ -195,7 +195,7 @@ library(ggthemes)
 ggplot(data = starwars, aes(x = height, y = mass, color = gender)) +
   geom_point() +
   labs(title = "Mass vs. height of Star Wars characters",
-       x = "Height (in cm)", y = "Mass (in kg)", fill = "Gender") +
+       x = "Height (in cm)", y = "Mass (in kg)", color = "Gender") +
   theme_fivethirtyeight()
 ```
 
