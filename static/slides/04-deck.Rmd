@@ -102,20 +102,37 @@ Which of the following is a more useful representation for evaluating whether em
 ```{r echo=FALSE}
 email <- email %>%
   mutate(
-    spam_ind = ifelse(spam == 0, "not spam", "spam"),
-    re_subj_ind = ifelse(re_subj == 0, "no", "yes")
+    spam = ifelse(spam == 0, "not spam", "spam"),
+    re_subj = ifelse(re_subj == 0, "no", "yes")
   )
 ```
 
 
 ```{r echo=FALSE, fig.width = 8}
-p1 <- ggplot(email, aes(x = spam_ind, fill = factor(re_subj_ind))) +
+p1 <- ggplot(email, aes(x = spam, fill = re_subj)) +
   geom_bar(position = "fill") +
   labs(x = "", fill = "re:", title = 'position: "fill"')
-p2 <- ggplot(email, aes(x = spam_ind, fill = factor(re_subj_ind))) +
+p2 <- ggplot(email, aes(x = spam, fill = re_subj)) +
   geom_bar(position = "stack") +
   labs(x = "", fill = "re:", title = 'position: "stack"')
 grid.arrange(p1, p2, nrow = 1)
+```
+
+## Segmented bar plots - filled
+
+```{r}
+ggplot(email, aes(x = spam, fill = re_subj)) +
+  geom_bar(position = "fill") +
+  labs(x = "", fill = "re:", title = 'position: "fill"')
+```
+
+
+## Segmented bar plots - stacked
+
+```{r}
+ggplot(email, aes(x = spam, fill = re_subj)) +
+  geom_bar(position = "fill") +
+  labs(x = "", fill = "re:", title = 'position: "fill"')
 ```
 
 # Customizing your plots
