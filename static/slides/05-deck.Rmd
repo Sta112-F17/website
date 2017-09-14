@@ -34,13 +34,15 @@ library(dplyr)
 
 ## Let's cause a merge conflict {.smaller}
 
+Take turns in completing the exercise, only one member at a time. For now, only commit and push the Rmd file:
+
 - Member 1 - Change the team name to your actual team name, knit, commit, push.
 
 - Member 2 - Change the team name to some other word, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
 
 - Member 3 - Add a name to the first code chunk, knit, commit, push. You should get an error. Pull. No merge conflicts should occur. Now push.
 
-- Member 4 - Add a different name to the firsrt code chunk, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
+- Member 4 - Add a different name to the first code chunk, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
 
 - All members - Pull, and observe the changes in your document.
 
