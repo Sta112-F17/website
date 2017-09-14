@@ -1,0 +1,53 @@
+---
+title: "05 - Resolving merge conflicts"
+author: "Dr. Çetinkaya-Rundel"
+date: "September 14, 2017"
+output:
+  ioslides_presentation:
+    css: lec.css
+    fig_height: 3.5
+    fig_width: 6
+    highlight: pygments
+    logo: img/sta112-hex.png
+    fig_caption: false
+---
+
+```{r echo=FALSE, message=FALSE}
+library(openintro)
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+```
+
+
+## Merge conflicts
+
+- When two collaborators make changes to a file and push the file to their repo, git merges these two files.
+
+- If these two files have conflicting content on the same line, git will produce a **merge conflict**.
+
+## Getting started
+
+- Create your assignment repo, clone in RStudio, and open the .Rmd file.
+
+- Assign the numbers 1, 2, 3, and 4 to each of the team members.
+
+## Let's cause a merge conflict {.smaller}
+
+- Member 1 - Change the team name to your actual team name, knit, commit, push.
+
+- Member 2 - Change the team name to some other word, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
+
+- Member 3 - Add a name to the first code chunk, knit, commit, push. You should get an error. Pull. No merge conflicts should occur. Now push.
+
+- Member 4 - Add a different name to the firsrt code chunk, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
+
+- All members - Pull, and observe the changes in your document.
+
+## Tips for collaborating via git/GitHub
+
+- Always pull first before you start working.
+
+- Commit, and push, often to minimize merge conflicts and/or to make merge conflicts easier to resolve.
+
+- If you find yourself in a situation that is difficult to resolve, ask questions asap, don't let it linger and get bigger.
