@@ -1,0 +1,122 @@
+---
+title: "HW 01"
+date: "Due: Sep 19 at 10:05am"
+
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Each year since 2005, the US Census Bureau surveys about 3.5 million households with The [American Community Survey](https://www.census.gov/programs-surveys/acs/) (ACS). Data collected from the ACS have been crucial in government and policy decisions, helping to determine the allocation of more than $400 billion in federal and state funds each year. For example, funds for the Adult Education and Family Literacy Act are distributed to states taking into consideration data from the ACS on number of adults 16 and over without a high school diploma. This act is the primary source of federal funding for adults with low basic skills seeking further education or English language services, and Department of Education uses ACS data to ensure the efficient distribute funds.
+
+The ACS received a surge of media attention in Spring 2012 when the House of Representatives voted to eliminate the survey.  Daniel Webster, a first-term Republican congressman from Florida, sponsored the legislation citing the following reasons:  
+
+- "This is a program that intrudes on people's lives, just like the Environmental Protection Agency or the bank regulators" 
+- "We're spending \$70 per person to fill this out. That's just not cost effective"
+- "in the end this is not a scientific survey. It's a random survey."
+
+In this assignment you will analyze data from the ACS.
+
+### Accessing the data
+
+The data can be found in the `openintro` package.
+
+In your console, run the following to install this package:
+
+```{r eval=FALSE}
+install.packages("openintro")
+```
+
+Then load the package with
+
+```{r eval=FALSE}
+library(openintro)
+```
+
+and load the data with
+
+```{r eval=FALSE}
+data(acs12)
+```
+
+Take a peek at the codebook with
+
+```{r eval=FALSE}
+?acs12
+```
+
+or at https://www.rdocumentation.org/packages/openintro/versions/1.7.1/topics/acs12.
+
+### Accessing the assignment repo
+
+Select one representative of your team to go to the #assignment-links channel on Slack and click on the link for hw-01, and accept the assignment, and create a new team with your team name. Then, have all the other members of your team accept the assignment and join your existing team.
+
+Then, each team member can follow the usual steps to clone the repo and get started with the analysis.
+
+### Assignment
+
+1. Data properties
+
+As a team, browse the data and select three variables that you think are interesting and that you think may have an interesting relationship. 
+
+For each of the variables you selected answer the following question: What are some of the properties of these variables that will be relevant (useful? problematic?) for data visualization? You are welcomed to add visualizations to your answer, but you don't have to.
+
+2. Plots
+
+Select and design two different plots that visualize the relationship between these three variables. Each plot should have different "purpose" that guides your choices and justifies the differences between the plots.
+
+3. Plot properties
+
+What two plot types have you selected? What are some of the properties of these plots, and how do those properties match with your variables of interest?
+
+4. Tasks
+
+What task(s) should readers of each plot be able to undertake? Why are these tasks important for these variables?
+
+5. Design context
+
+What design choices did you make to try to help users accomplish the intended tasks?
+
+6. User skills
+
+What type of audience did you intend the plots for? What types of skills does this audience bring to the understanding of your plots? What elements of your plots might be difficult for the audience to understand, and how do you justify the choices you have made about those elements?
+
+### Getting help
+
+Use the #r-help or #github-help channels on Slack to ask questions, as well as your team channel. If your question is about an error you're getting, make sure to provide the error as well as the code necessary to reproduce the error.
+
+You are also welcomed and encouraged to attend office hours and ask questions there.
+
+Remember that while you're welcomed to broadly discuss the homework with other teams, you cannot share code or any other content across teams.
+
+### Tips
+
+- You're working in the same repo as your teammates now, so merge conflics will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.
+
+- Review the grading guidelines below and ask questions if any of the expectations are unclear.
+
+- Make sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).
+
+- Set aside time to work together and apart (physically).
+
+- When you're done, review the .md document on GitHub to make sure you're happy with the final state of your work. Then go get some rest!
+
+### Grading
+
+Total                                                   | 100 pts
+--------------------------------------------------------|--------
+Part 1: Data properties                                 | 15 pts
+Part 2: Plots                                           | 15 pts
+Part 3: Plot properties                                 | 15 pts
+Part 4: Tasks                                           | 5 pts
+Part 5: Design context                                  | 5 pts
+Part 6: User skills                                     | 5 pts
+Code quality                                            | 15 pts
+Commit frquency and informative commit messages         | 5 pts
+Informatively named code chunks                         | 5 pts
+Collaboration & contribution                            | 10 pts
+Document organization  (team name, code chunk names, overall organization, etc.)                                                         | 5 pt
