@@ -3,6 +3,8 @@ title: "Mini HW 01"
 output: 
   html_document: 
     theme: yeti
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}

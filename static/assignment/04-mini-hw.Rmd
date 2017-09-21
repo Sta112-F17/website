@@ -4,6 +4,8 @@ date: "Due: Sep 12 at 10:05am"
 output: 
   html_document: 
     theme: yeti
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
