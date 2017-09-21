@@ -1,5 +1,5 @@
 ---
-title: "07 - Coding style + studies: SAT scores and smoking "
+title: "07 - Coding style + Case studies: SAT scores and smoking "
 author: "Dr. Çetinkaya-Rundel"
 date: "September 21, 2017"
 output:
@@ -17,6 +17,24 @@ output:
 ## Recap
 
 - Any questions from last time?
+
+- Any questions from the reading?
+
+## Haters gonna hate -- study confirms {.smaller}
+
+<div class="columns-2">
+Read: http://slate.me/1dr5XPE
+
+1. What are the cases, i.e. observations?
+2. What is (are) the response variable(s) in this study?
+3. What is (are) the explanatory variable(s) in this study?
+4. Does the study employ random sampling? How about random assignment?
+5. Is this an observational study or an experiment? Explain your reasoning.
+6. Can we establish a causal link between the explanatory and response variables?
+7. Can the results of the study be generalized to the population at large?
+
+![](img/07/haters.jpg)
+</div>
 
 # Coding style
 
@@ -98,10 +116,10 @@ ggplot(diamonds,mapping=aes(x=price))+geom_histogram()
 
 ```{r eval = FALSE}
 # Good
-`x <- 2`
+x <- 2
 
 # Bad
-`x = 2`
+x = 2
 ```
 
 ## Quotes
@@ -129,7 +147,7 @@ What relationship would you expect to see between average SAT scores and average
 
 ## Data
 
-Data are from 1997! The dataset is in the `moasicData` package, and we will also make use of `dplyr` and `ggplotot21.
+Data are from 1997! The dataset is in the `moasicData` package, and we will also make use of `dplyr` and `ggplotot2`.
 
 ```{r message=FALSE}
 library(mosaicData)

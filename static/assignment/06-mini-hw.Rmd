@@ -1,6 +1,6 @@
 ---
 title: "Mini HW 06 - Simpson's paradox"
-date: "Due: Sep 21 at 10:05am"
+date: "Due: Sep 26 at 10:05am"
 author: "Team assignment"
 output: 
   html_document: 
@@ -88,7 +88,7 @@ Total                                                   | 15 pts
 --------------------------------------------------------|--------
 Questions 1-3                                           | 1 pt / question - 3 pts
 Questions 4-7                                           | 2 pt / question - 8 pts
-Overall organization                                    | 2 pt
+Code style                                              | 1 pt
 Informatively named code chunks                         | 1 pt
 Commit frequency and informative messages               | 1 pt
 

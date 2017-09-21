@@ -1,0 +1,19 @@
+---
+title: "Reading 04"
+date: "Due: Sep 26 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- R4DS: [Chapter 5: Data transformation](http://r4ds.had.co.nz/transform.html)
+    - 5.1 Introduction
+    - 5.2 Filter rows with `filter()`
+    - 5.3 Arrange columns with `arrange()`
+    - 5.4 Select columns with `select()`
+    - 5.5 Add new variables with `mutate()`
+    
