@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-A study of conducted in Whickham, England recorded participants' age, smoking status at baseline, and then 10 years later recorded their health outcome.
+A study of conducted in Whickham, England recorded participants' age, smoking status at baseline, and then 20 years later recorded their health outcome.
 
 ### Accessing the data
 
@@ -71,7 +71,7 @@ Whickham %>%
 6. Create a new variable called `age_cat` using the following scheme:
 
 - `age <= 44 ~ "18-44"`
-- `age > 44 & age <= 64 ~ "44-64"`
+- `age > 44 & age <= 64 ~ "45-64"`
 - `age > 64 ~ "65+"`
 
 7. Re-create the visualization depicting the relationship between smoking status and health outcome, faceted by `age_cat`. What changed? What might explain this change? You can extend the contingency table from earlier by breaking it down by age category and use it to help your narrative.
