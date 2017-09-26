@@ -47,6 +47,7 @@ lessons:
     reading: "05-reading.html"
   - title: "Types of variables"
     date: "Thur, Sept 28"
+    assignment: "07-mini-hw.html"
   - title: "Converting between types of variables"
     date: "Tue, Oct 3"
     exam: "MT1"
