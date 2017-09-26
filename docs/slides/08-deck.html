@@ -697,7 +697,7 @@
 <li>Install:</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>install.packages(stringr) # only have to do this once, in your Console</pre>
+<pre class = 'prettyprint lang-r'>install.packages(&quot;stringr&quot;) # only have to do this once, in your Console</pre>
 
 <ul>
 <li>Load:</li>
@@ -721,8 +721,10 @@
 </ul>
 
 <pre class = 'prettyprint lang-r'>bike &lt;- bike %&gt;%
-  mutate(BikeAge_Gr = str_replace(BikeAge_Gr, &quot;10-Jun&quot;, &quot;6-10&quot;)) %&gt;%
-  mutate(BikeAge_Gr = str_replace(BikeAge_Gr, &quot;15-Nov&quot;, &quot;11-15&quot;))</pre>
+  mutate(
+    BikeAge_Gr = str_replace(BikeAge_Gr, &quot;10-Jun&quot;, &quot;6-10&quot;),
+    BikeAge_Gr = str_replace(BikeAge_Gr, &quot;15-Nov&quot;, &quot;11-15&quot;)
+    )</pre>
 
 <ul>
 <li>Note that we&#39;re overwriting existing data and columns, so be careful!
@@ -764,9 +766,10 @@
 
 <pre class = 'prettyprint lang-r'>bike %&gt;%
   mutate(alcohol = case_when(
-    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;No&quot; ~ &quot;No&quot;,
-    Bike_Alc_D == &quot;Yes&quot; | Drvr_Alc_D == &quot;Yes&quot; ~ &quot;Yes&quot;,
-    Bike_Alc_D == &quot;Missing&quot; &amp; Drvr_Alc_D == &quot;Missing&quot; ~ &quot;Missing&quot;
+    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;No&quot;      ~ &quot;No&quot;,
+    Bike_Alc_D == &quot;Yes&quot; | Drvr_Alc_D == &quot;Yes&quot;    ~ &quot;Yes&quot;,
+    Bike_Alc_D == &quot;Missing&quot; &amp; Drvr_Alc_D == &quot;No&quot; ~ &quot;Missing&quot;,
+    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;Missing&quot; ~ &quot;Missing&quot;
   ))</pre>
 
 </article></slide><slide class=''><hgroup><h2>&quot;Save&quot; when you <code>mutate</code></h2></hgroup><article  id="save-when-you-mutate">
@@ -775,9 +778,10 @@
 
 <pre class = 'prettyprint lang-r'>bike &lt;- bike %&gt;%
   mutate(alcohol = case_when(
-    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;No&quot; ~ &quot;No&quot;,
-    Bike_Alc_D == &quot;Yes&quot; | Drvr_Alc_D == &quot;Yes&quot; ~ &quot;Yes&quot;,
-    Bike_Alc_D == &quot;Missing&quot; &amp; Drvr_Alc_D == &quot;Missing&quot; ~ &quot;Missing&quot;
+    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;No&quot;      ~ &quot;No&quot;,
+    Bike_Alc_D == &quot;Yes&quot; | Drvr_Alc_D == &quot;Yes&quot;    ~ &quot;Yes&quot;,
+    Bike_Alc_D == &quot;Missing&quot; &amp; Drvr_Alc_D == &quot;No&quot; ~ &quot;Missing&quot;,
+    Bike_Alc_D == &quot;No&quot; &amp; Drvr_Alc_D == &quot;Missing&quot; ~ &quot;Missing&quot;
   ))</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>transmute</code> to create a new dataset</h2></hgroup><article  id="transmute-to-create-a-new-dataset" class="smaller">
@@ -785,10 +789,10 @@
 <p>You&#39;ll use this much less often than <code>mutate</code> but when you need it, you need it.</p>
 
 <pre class = 'prettyprint lang-r'>bike %&gt;% 
-  transmute(date = paste(FID, OBJECTID, sep = &quot;-&quot;))</pre>
+  transmute(ID = paste(FID, OBJECTID, sep = &quot;-&quot;))</pre>
 
 <pre >## # A tibble: 5,716 x 1
-##     date
+##       ID
 ##    &lt;chr&gt;
 ##  1 18-19
 ##  2 29-30

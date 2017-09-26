@@ -268,7 +268,7 @@ these data
 
 - Install:
 ```{r eval=FALSE}
-install.packages(stringr) # only have to do this once, in your Console
+install.packages("stringr") # only have to do this once, in your Console
 ```
 
 - Load:
@@ -289,8 +289,10 @@ http://stringr.tidyverse.org/articles/stringr.html
  
 ```{r}
 bike <- bike %>%
-  mutate(BikeAge_Gr = str_replace(BikeAge_Gr, "10-Jun", "6-10")) %>%
-  mutate(BikeAge_Gr = str_replace(BikeAge_Gr, "15-Nov", "11-15"))
+  mutate(
+    BikeAge_Gr = str_replace(BikeAge_Gr, "10-Jun", "6-10"),
+    BikeAge_Gr = str_replace(BikeAge_Gr, "15-Nov", "11-15")
+    )
 ```
 
 - Note that we're overwriting existing data and columns, so be careful!
@@ -316,9 +318,10 @@ How is the new `alcohol` variable determined?
 ```{r eval=FALSE}
 bike %>%
   mutate(alcohol = case_when(
-    Bike_Alc_D == "No" & Drvr_Alc_D == "No" ~ "No",
-    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes" ~ "Yes",
-    Bike_Alc_D == "Missing" & Drvr_Alc_D == "Missing" ~ "Missing"
+    Bike_Alc_D == "No" & Drvr_Alc_D == "No"      ~ "No",
+    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes"    ~ "Yes",
+    Bike_Alc_D == "Missing" & Drvr_Alc_D == "No" ~ "Missing",
+    Bike_Alc_D == "No" & Drvr_Alc_D == "Missing" ~ "Missing"
   ))
 ```
 
@@ -329,9 +332,10 @@ Most often when you define a new variable with `mutate` you'll also want to save
 ```{r eval=FALSE}
 bike <- bike %>%
   mutate(alcohol = case_when(
-    Bike_Alc_D == "No" & Drvr_Alc_D == "No" ~ "No",
-    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes" ~ "Yes",
-    Bike_Alc_D == "Missing" & Drvr_Alc_D == "Missing" ~ "Missing"
+    Bike_Alc_D == "No" & Drvr_Alc_D == "No"      ~ "No",
+    Bike_Alc_D == "Yes" | Drvr_Alc_D == "Yes"    ~ "Yes",
+    Bike_Alc_D == "Missing" & Drvr_Alc_D == "No" ~ "Missing",
+    Bike_Alc_D == "No" & Drvr_Alc_D == "Missing" ~ "Missing"
   ))
 ```
 
@@ -341,7 +345,7 @@ You'll use this much less often than `mutate` but when you need it, you need it.
 
 ```{r}
 bike %>% 
-  transmute(date = paste(FID, OBJECTID, sep = "-"))
+  transmute(ID = paste(FID, OBJECTID, sep = "-"))
 ```
 
 ## `slice` for certain row numbers {.smaller}
