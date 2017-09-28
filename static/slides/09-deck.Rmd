@@ -96,11 +96,9 @@ bike %>%
   arrange(County, City)
 ```
 
-<!--
-
 # Wrangling diamonds
 
-## Q1
+## Q1 {.smaller}
 
 Price is a continuous numeric variable (measured in cents). I would expect the distribution of price to be right-skewed, as the price can never be below 0, and as the price increases the number of diamonds at that price should decrease. This expectation is confirmed, given the histogram below:
 
@@ -110,7 +108,7 @@ ggplot(diamonds, aes(x = price)) +
   labs(x = "Price", y = "Count", title = "Price is highly right-skewed")
 ```
 
-## Q2
+## Q2 {.smaller}
 
 There are 1,610 fair diamonds, 4,906 good diamonds, 12,082 very good diamonds, 13,791 premium diamonds, and 21,551 ideal diamonds, as given by the summary table below.
 
@@ -123,15 +121,15 @@ diamonds %>%
   arrange(n_diamonds)
 ```
 
-## Q2 alternative
-
+## Q2 alternative {.smaller}
+ 
 ```{r number-each-cut-count}
 diamonds %>%
   count(cut) %>%
   arrange(n)
 ```
 
-## Q3
+## Q3 {.smaller}
 
 The proportion of each clarity of diamonds is given in the table below:
 
@@ -143,7 +141,7 @@ diamonds %>%
   arrange(desc(prop))
 ```
 
-## Q4
+## Q4 {.smaller}
 
 A scatterplot depicting the relationship between depth and price is shown below.  There is no real relationship between the two. The variability of prices increases as depth increases.
 
@@ -156,7 +154,7 @@ diamonds %>%
          title = "No real relationship between cut depth and price")
 ```
 
-## Q5
+## Q5 {.smaller}
 
 Summary statistics for each cut of diamond are shown below:
 
@@ -169,8 +167,6 @@ diamonds %>%
             median_price = median(price)) %>%
   arrange(desc(median_price))
 ```
-
--->
 
 # Data types
 
