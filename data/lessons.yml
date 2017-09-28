@@ -48,6 +48,7 @@ lessons:
   - title: "Types of variables"
     date: "Thur, Sept 28"
     assignment: "07-mini-hw.html"
+    slides: "09-deck.html"
   - title: "Converting between types of variables"
     date: "Tue, Oct 3"
     exam: "MT1"

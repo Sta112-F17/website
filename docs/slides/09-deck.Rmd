@@ -1,0 +1,414 @@
+---
+title: "09 - Data wrangling recap + data types in R"
+author: "Dr. Çetinkaya-Rundel"
+date: "September 26, 2017"
+output:
+  ioslides_presentation:
+    css: lec.css
+    fig_height: 3.5
+    fig_width: 6
+    highlight: pygments
+    logo: img/sta112-hex.png
+    widescreen: yes
+---
+
+```{r load-packages, message=FALSE, echo=FALSE}
+library(gapminder)
+library(tidyverse)
+library(mosaicData)
+library(openintro)
+library(emo)
+library(stringr)
+```
+
+
+# Getting started
+
+## Recap
+
+- Any questions from last time?
+
+- Any questions from the homework?
+
+## Midterm {.smaller}
+
+- Assigned today around 12:30pm
+
+- Rules discussed in class on Tuesday -- any questions?
+
+# Data wrangling (remaining slides)
+
+## NC DOT Fatal Crashes in North Carolina {.smaller}
+
+From https://opendurham.nc.gov
+
+```{r load-data, eval=FALSE}
+bike <- read_csv2("https://stat.duke.edu/~mc301/data/nc_bike_crash.csv", 
+                  na = c("NA", "", "."))
+```
+ 
+## Data manipulations 
+
+```{r, eval=FALSE}
+bike <- bike %>%
+  mutate(
+    # Fix BikeAge_Gr
+    BikeAge_Gr = str_replace(BikeAge_Gr, "10-Jun", "6-10"),
+    BikeAge_Gr = str_replace(BikeAge_Gr, "15-Nov", "11-15"),
+    # Crrate new alcohol variable
+    alcohol = case_when(
+      Bike_Alc_D == "No"      & Drvr_Alc_D == "No"      ~ "No",
+      Bike_Alc_D == "Yes"     | Drvr_Alc_D == "Yes"     ~ "Yes",
+      Bike_Alc_D == "Missing" & Drvr_Alc_D == "No"      ~ "Missing",
+      Bike_Alc_D == "No"      & Drvr_Alc_D == "Missing" ~ "Missing"
+      )
+    ) %>%
+    # Rename Speed_Limit
+  rename(Speed_Limit = Speed_Limi)
+```
+
+## Select rows with `sample_n` or `sample_frac` {.smaller}
+
+- `sample_n`: randomly sample 5 observations
+
+```{r, eval=FALSE}
+bike_n5 <- bike %>%
+  sample_n(5, replace = FALSE)
+dim(bike_n5)
+```
+
+- `sample_frac`: randomly sample 20% of observations
+
+```{r, eval=FALSE}
+bike_perc20 <-bike %>%
+  sample_frac(0.2, replace = FALSE)
+dim(bike_perc20)
+```
+
+</div>
+
+## `distinct` to filter for unique rows
+
+```{r, eval=FALSE}
+bike %>% 
+  select(County, City) %>% 
+  distinct() %>% 
+  arrange(County, City)
+```
+
+<!--
+
+# Wrangling diamonds
+
+## Q1
+
+Price is a continuous numeric variable (measured in cents). I would expect the distribution of price to be right-skewed, as the price can never be below 0, and as the price increases the number of diamonds at that price should decrease. This expectation is confirmed, given the histogram below:
+
+```{r price-histogram}
+ggplot(diamonds, aes(x = price)) +
+  geom_histogram(col = "white", binwidth = 500) +
+  labs(x = "Price", y = "Count", title = "Price is highly right-skewed")
+```
+
+## Q2
+
+There are 1,610 fair diamonds, 4,906 good diamonds, 12,082 very good diamonds, 13,791 premium diamonds, and 21,551 ideal diamonds, as given by the summary table below.
+
+Two alternative approaches, either works, ok not to arrange in order:
+
+```{r number-each-cut0group-by}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(n_diamonds = n()) %>%
+  arrange(n_diamonds)
+```
+
+## Q2 alternative
+
+```{r number-each-cut-count}
+diamonds %>%
+  count(cut) %>%
+  arrange(n)
+```
+
+## Q3
+
+The proportion of each clarity of diamonds is given in the table below:
+
+```{r proportion-clarity}
+diamonds %>%
+  group_by(clarity) %>%
+  summarise(freq = n()) %>%
+  mutate(prop = round(freq / sum(freq), 3)) %>%
+  arrange(desc(prop))
+```
+
+## Q4
+
+A scatterplot depicting the relationship between depth and price is shown below.  There is no real relationship between the two. The variability of prices increases as depth increases.
+
+```{r depth-price-plot-fair}
+diamonds %>%
+  filter(cut == "Fair") %>%
+  ggplot(mapping = aes(x = depth, y = price)) +
+    geom_point() +
+    labs(x = "Depth", y = "Price", 
+         title = "No real relationship between cut depth and price")
+```
+
+## Q5
+
+Summary statistics for each cut of diamond are shown below:
+
+```{r cut_summary}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(min_price = min(price), 
+            max_price = max(price), 
+            mean_price = mean(price), 
+            median_price = median(price)) %>%
+  arrange(desc(median_price))
+```
+
+-->
+
+# Data types
+
+## Data structures and dimensionality {.flexbox .vcenter}
+
+----------------------------------------------------
+  Dimensions        Homogeneous      Heterogeneous
+--------------    ---------------  -----------------
+  1*d*              Vector           List
+                  (atomic vector)  (generic vector)
+
+  2*d*              Matrix           Tibble or Data Frame
+
+  n*d*              Array            ---
+----------------------------------------------------
+
+# Vectors
+
+## Vector types {.smaller}
+
+R has six basic atomic vector types, but for now we'll only focus on the first four:
+
+* **logical**
+
+* **double**
+
+* **integer**
+
+* **character**
+
+* complex
+
+* raw
+
+## Vector types - examples {.smaller}
+
+**logical** - boolean values `TRUE` and `FALSE`
+
+```{r}
+typeof(TRUE)
+```
+
+**character** - character strings
+
+```{r}
+typeof("hello")
+typeof('world')
+```
+
+## Vector types - examples {.smaller}
+
+**double** - floating point numerical values (default numerical type)
+
+```{r}
+typeof(1.335)
+typeof(7)
+```
+
+**integer** - integer numerical values (indicated with an `L`)
+
+```{r}
+typeof(7L)
+typeof(1:3)
+```
+
+## Concatenation
+
+Vectors can be constructed using the `c()` function.
+
+```{r}
+c(1, 2, 3)
+c("Hello", "World!")
+c(1, c(2, c(3)))
+```
+
+
+## Coercion
+
+R is a dynamically typed language -- it will happily convert between the various types 
+without complaint.
+
+```{r}
+c(1, "Hello")
+c(FALSE, 3L)
+c(1.2, 3L)
+```
+
+## Missing Values
+
+R uses `NA` to represent missing values in its data structures.
+
+```{r}
+typeof(NA)
+```
+
+## Other Special Values {.smaller}
+
+`NaN` - Not a number
+
+`Inf` - Positive infinity
+
+`-Inf` - Negative infinity
+
+<br/>
+
+<div class="columns-2">
+```{r}
+pi / 0
+0 / 0
+1/0 + 1/0
+1/0 - 1/0
+NaN / NA
+NaN * NA
+```
+</div>
+
+## Quick activity: 5 minutes, in teams
+
+What is the type of the following vectors? Explain why they have that type.
+
+* `c(1, NA+1L, "C")`
+* `c(1L / 0, NA)`
+* `c(1:3, 5)`
+* `c(3L, NaN+1L)`
+* `c(NA, TRUE)`
+
+# Lists
+
+## Lists {.smaller}
+
+Lists are _generic vectors_: 1d and can contain any combination of R objects.
+
+```{r}
+mylist = list("A", 1:4, c(TRUE, FALSE), (1:4)/2)
+mylist
+```
+
+```{r}
+str(mylist)
+```
+
+## Named lists {.smaller}
+
+Because of their more complex structure we often want to name the elements of a list (we 
+can also do this with vectors). This can make reading and accessing the list more 
+straight forward.
+
+```{r}
+myotherlist <- list(A = "hello", B = 1:4, "knock knock" = "who's there?")
+str(myotherlist)
+names(myotherlist)
+myotherlist$B
+```
+
+## Vectors vs. lists - [ vs. [[ {.smaller}
+
+```{r, error=TRUE}
+x <- c(8,4,7)
+x[1]
+x[[1]]
+y <- list(8,4,7)
+y[2]
+y[[2]]
+```
+
+**Note:** When using tidyverse code you'll rarely need to refer to elements using square brackets, but it's good to be aware of this syntax, especially since you might encounter it when searching for help online.
+
+# Data "sets"
+
+## Data "sets" in R
+
+- "set" is in quotation marks because it is not a formal data type
+
+- A tidy data "set" can be one of the following types:
+    + `tibble`
+    + `data.frame`
+
+- We'll often work with `tibble`s:
+    + `readr` package (e.g. `read_csv` function) loads data as a `tibble` by default
+    + `tibble`s are part of the tidyverse, so they work well with other packages we are using
+    + they make minimal assumptions about your data, so are less likely to cause hard to track bugs in your code
+
+## Data frames
+
+A data frame is the most commonly used data structure in R, they are just a list of equal length vectors (usually atomic, but you can use generic as well). Each vector is treated as a column and elements of the vectors as rows.
+
+Most often a data frame will be constructed by reading in from a file, but we can also create them from scratch.
+
+```{r}
+df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+str(df)
+```
+
+## Data frames (cont.) {.smaller}
+
+```{r}
+attributes(df)
+class(df$x)
+class(df$y)
+```
+
+## tibbles
+
+A tibble is a type of data frame that ... makes your life (i.e. data analysis) easier.
+
+See `?tibble` for details.
+
+```{r}
+df1 <- data.frame(x = 1:3, 
+                  y = c("a", "b", "c"))
+as_tibble(df1)
+```
+
+## `as_tibble()` in a pipe {.smaller}
+
+You can convert `data.frame`s to `tibble`s with the `as_tibble` function:
+
+```{r}
+df2 <- data.frame(m = 3:1, 
+                  n = c(TRUE, TRUE, FALSE)) %>%
+  as_tibble()
+df2
+```
+
+# Summary of data structures
+
+## Recap
+
+- Always best to think of data as part of a tibble
+    + This plays nicely with `dplyr` and `ggplot2` as well
+    + Rows are observations, columns are variables
+    
+- Be careful about data types / classes
+    + Sometimes `R` makes silly assumptions about your data class 
+        + Using `tibble`s instead of `data.frame`s helps, but it might not solve all issues
+        + Think about your data in context, e.g. 0/1 variable is most likely a `factor`
+    + If a plot/output is not behaving the way you expect, first
+    investigate the data class
+    + If you are absolutely sure of a data class, over-write it in your
+    tibble so that you don't need to keep having to keep track of it
+        + `mutate` the variable with the correct class
