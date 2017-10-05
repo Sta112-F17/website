@@ -226,7 +226,31 @@ div.tocify {
 <h2>Package list</h2>
 <div id="packages-on-cran" class="section level3">
 <h3>Packages on CRAN</h3>
+<p>These packages can be installed with:</p>
+<pre class="r"><code>install.packages(&quot;PACKAGENAME&quot;)</code></pre>
+<p>The package manuals are linked below, however developers of the packages might have additional information on the GitHub repo of the package.</p>
 <ul>
+<li>cowsay:
+<ul>
+<li>Allows printing of character strings as messages/warnings/etc. with ASCII animals, including cats, cows, frogs, chickens, ghosts, and more.</li>
+<li><a href="https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html" class="uri">https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html</a></li>
+</ul></li>
+<li>babynames:
+<ul>
+<li>US Baby Names 1880-2015</li>
+<li><a href="https://cran.r-project.org/web/packages/babynames/babynames.pdf" class="uri">https://cran.r-project.org/web/packages/babynames/babynames.pdf</a></li>
+</ul></li>
+<li>Lahman:
+<ul>
+<li>Provides the tables from the ‘Sean Lahman Baseball Database’ as a set of R data.frames. It uses the data on pitching, hitting and fielding performance and other tables from 1871 through 2015, as recorded in the 2016 version of the database.</li>
+<li><a href="https://cran.r-project.org/web/packages/Lahman/Lahman.pdf" class="uri">https://cran.r-project.org/web/packages/Lahman/Lahman.pdf</a></li>
+</ul></li>
+<li>praise:
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/praise/praise.pdf" class="uri">https://cran.r-project.org/web/packages/praise/praise.pdf</a></li>
+<li>Build friendly R packages that praise their users if they have done something good, or they just need it to feel better.<br />
+</li>
+</ul></li>
 <li>GGally:
 <ul>
 <li>The R package ‘ggplot2’ is a plotting system based on the grammar of graphics. ‘GGally’ extends ‘ggplot2’ by adding several functions to reduce the complexity of combining geometric objects with transformed data. Some of these functions include a pairwise plot matrix, a two group pairwise plot matrix, a parallel coordinates plot, a survival plot, and several functions to plot networks.</li>
@@ -236,41 +260,6 @@ div.tocify {
 <ul>
 <li>Supports image files and graphic objects to be visualized in ‘ggplot2’ graphic system.</li>
 <li><a href="https://cran.r-project.org/web/packages/ggimage/vignettes/ggimage.html" class="uri">https://cran.r-project.org/web/packages/ggimage/vignettes/ggimage.html</a></li>
-</ul></li>
-<li>babynames:
-<ul>
-<li>US Baby Names 1880-2015</li>
-<li><a href="https://cran.r-project.org/web/packages/babynames/babynames.pdf" class="uri">https://cran.r-project.org/web/packages/babynames/babynames.pdf</a></li>
-</ul></li>
-</ul>
-</div>
-<div id="packages-github-only" class="section level3">
-<h3>Packages GitHub only</h3>
-<ul>
-<li>emo:
-<ul>
-<li>The goal of emo(ji) is to make it very easy to insert emoji into RMarkdown documents</li>
-<li><a href="https://github.com/hadley/emo" class="uri">https://github.com/hadley/emo</a></li>
-</ul></li>
-<li>Lahman:
-<ul>
-<li>Provides the tables from the ‘Sean Lahman Baseball Database’ as a set of R data.frames. It uses the data on pitching, hitting and fielding performance and other tables from 1871 through 2015, as recorded in the 2016 version of the database.</li>
-<li><a href="https://cran.r-project.org/web/packages/Lahman/Lahman.pdf" class="uri">https://cran.r-project.org/web/packages/Lahman/Lahman.pdf</a></li>
-</ul></li>
-<li>gganimate:
-<ul>
-<li>Create easy animations with ggplot2</li>
-<li><a href="https://github.com/dgrtwo/gganimate" class="uri">https://github.com/dgrtwo/gganimate</a></li>
-</ul></li>
-<li>emokid:
-<ul>
-<li>For those times when you’re having trouble expressing how you feel about your broken code.</li>
-<li><a href="https://github.com/itsrainingdata/emokid" class="uri">https://github.com/itsrainingdata/emokid</a></li>
-</ul></li>
-<li>praise:
-<ul>
-<li><a href="https://cran.r-project.org/web/packages/praise/praise.pdf" class="uri">https://cran.r-project.org/web/packages/praise/praise.pdf</a></li>
-<li>Build friendly R packages that praise their users if they have done something good, or they just need it to feel better.</li>
 </ul></li>
 <li>suncalc:
 <ul>
@@ -282,10 +271,35 @@ div.tocify {
 <li>A collection of fortunes from the R community</li>
 <li><a href="https://cran.r-project.org/web/packages/fortunes/fortunes.pdf" class="uri">https://cran.r-project.org/web/packages/fortunes/fortunes.pdf</a></li>
 </ul></li>
-<li>cowsay:
+<li>ttbbeer
 <ul>
-<li>Allows printing of character strings as messages/warnings/etc. with ASCII animals, including cats, cows, frogs, chickens, ghosts, and more.</li>
-<li><a href="https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html" class="uri">https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html</a></li>
+<li>An R data package of beer statistics from U.S. Department of the Treasury, Alcohol and Tobacco Tax and Trade Bureau (TTB)</li>
+<li><a href="https://cran.r-project.org/web/packages/ttbbeer/ttbbeer.pdf" class="uri">https://cran.r-project.org/web/packages/ttbbeer/ttbbeer.pdf</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="packages-github-only" class="section level3">
+<h3>Packages GitHub only</h3>
+<p>These packages can be installed with:</p>
+<pre class="r"><code>library(devtools)
+install_github(&quot;USERNAME/PACKAGENAME&quot;)</code></pre>
+<p><code>USERNAME</code> refers to the user name of the developer of the package. For example, for the first package listed below, <code>USERNAME</code> is <code>hadley</code> and <code>PACKAGENAME</code> is <code>emo</code>.</p>
+<p>The package manuals are linked below, however developers of the packages might have additional information on the GitHub repo of the package.</p>
+<ul>
+<li>emo:
+<ul>
+<li>The goal of emo(ji) is to make it very easy to insert emoji into RMarkdown documents</li>
+<li><a href="https://github.com/hadley/emo" class="uri">https://github.com/hadley/emo</a></li>
+</ul></li>
+<li>gganimate:
+<ul>
+<li>Create easy animations with ggplot2</li>
+<li><a href="https://github.com/dgrtwo/gganimate" class="uri">https://github.com/dgrtwo/gganimate</a></li>
+</ul></li>
+<li>emokid:
+<ul>
+<li>For those times when you’re having trouble expressing how you feel about your broken code.</li>
+<li><a href="https://github.com/itsrainingdata/emokid" class="uri">https://github.com/itsrainingdata/emokid</a></li>
 </ul></li>
 <li>prenoms:
 <ul>
@@ -312,11 +326,6 @@ div.tocify {
 <li>Use emoji in your ggplot2 plots.</li>
 <li><a href="https://github.com/dill/emoGG" class="uri">https://github.com/dill/emoGG</a></li>
 </ul></li>
-<li>ttbbeer
-<ul>
-<li>An R data package of beer statistics from U.S. Department of the Treasury, Alcohol and Tobacco Tax and Trade Bureau (TTB)</li>
-<li><a href="https://github.com/jasdumas/ttbbeer" class="uri">https://github.com/jasdumas/ttbbeer</a></li>
-</ul></li>
 <li>lego
 <ul>
 <li>This R data package contains information about every Lego set manufactured from 1970 to 2015, a total of 6172 sets.</li>
@@ -327,7 +336,8 @@ div.tocify {
 <li>Generate Bingo cards</li>
 <li><a href="https://github.com/jennybc/bingo" class="uri">https://github.com/jennybc/bingo</a></li>
 </ul></li>
-<li>CatterPlots
+<li>CatterPlots</li>
+<li>Plots with Cats
 <ul>
 <li><a href="https://github.com/Gibbsdavidl/CatterPlots" class="uri">https://github.com/Gibbsdavidl/CatterPlots</a></li>
 </ul></li>
@@ -344,10 +354,8 @@ div.tocify {
 <li>Install the package you pick. Depending on where the package comes from, how you install the package differs:
 <ul>
 <li>If the package is on CRAN (Comprehensive R Archive Network), you can install it with <code>install.packages</code>.</li>
-<li>If the package is only on Github (most likely because it is still under development), you need to follow these steps in your Console:</li>
-</ul>
-<pre class="r"><code>library(devtools)
-install_github(&quot;username/packagename&quot;)</code></pre></li>
+<li>If the package is only on Github (most likely because it is still under development), you need to use the <code>install_github</code> function. See above for details.</li>
+</ul></li>
 <li><p>Regardless of how you installed the package you can load it with the <code>library</code> function.</p></li>
 <li><p>Do something with the package. It doesn’t have to be complicated. In fact, keep it simple. The goal is to try to read and understand the package documentation to be able to carry out a simple task.</p></li>
 <li><p>Give me a brief narrative of what you did.</p></li>

@@ -19,48 +19,64 @@ But really, one is enough. Pick a package from the list below, and use it to do 
 
 ### Packages on CRAN
 
-- GGally:
-	- The R package 'ggplot2' is a plotting system based on the grammar of graphics. 'GGally' extends 'ggplot2' by adding several functions to reduce the complexity of combining geometric objects with transformed data. Some of these functions include a pairwise plot matrix, a two group pairwise plot matrix, a parallel coordinates plot, a survival plot, and several functions to plot networks. 
-	- https://cran.r-project.org/web/packages/GGally/GGally.pdf
+These packages can be installed with:
 
-- ggimage:
-	- Supports image files and graphic objects to be visualized in 'ggplot2' graphic system.
-	- https://cran.r-project.org/web/packages/ggimage/vignettes/ggimage.html
+```{r eval=FALSE}
+install.packages("PACKAGENAME")
+```
 
+The package manuals are linked below, however developers of the packages might have additional information on the GitHub repo of the package.
+
+- cowsay:
+	- Allows printing of character strings as messages/warnings/etc. with ASCII animals, including cats, cows, frogs, chickens, ghosts, and more.
+	- https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html
 - babynames:
 	- US Baby Names 1880-2015
 	- https://cran.r-project.org/web/packages/babynames/babynames.pdf
-
+- Lahman:
+	- Provides the tables from the 'Sean Lahman Baseball Database' as a set of R data.frames. It uses the data on pitching, hitting and fielding performance and other tables from 1871 through 2015, as recorded in the 2016 version of the database. 
+	- https://cran.r-project.org/web/packages/Lahman/Lahman.pdf
+- praise:
+	- https://cran.r-project.org/web/packages/praise/praise.pdf
+	- Build friendly R packages that praise their users if they have done something good, or they just need it to feel better.	
+- GGally:
+	- The R package 'ggplot2' is a plotting system based on the grammar of graphics. 'GGally' extends 'ggplot2' by adding several functions to reduce the complexity of combining geometric objects with transformed data. Some of these functions include a pairwise plot matrix, a two group pairwise plot matrix, a parallel coordinates plot, a survival plot, and several functions to plot networks. 
+	- https://cran.r-project.org/web/packages/GGally/GGally.pdf
+- ggimage:
+	- Supports image files and graphic objects to be visualized in 'ggplot2' graphic system.
+	- https://cran.r-project.org/web/packages/ggimage/vignettes/ggimage.html
+- suncalc:
+	- R interface to 'suncalc.js' library, part of the 'SunCalc.net' project <http://suncalc.net>, for calculating sun position, sunlight phases (times for sunrise, sunset, dusk, etc.), moon position and lunar phase for the given location and time.
+	- https://cran.r-project.org/web/packages/suncalc/suncalc.pdf
+- fortunes:
+	- A collection of fortunes from the R community
+	- https://cran.r-project.org/web/packages/fortunes/fortunes.pdf
+- ttbbeer
+	- An R data package of beer statistics from U.S. Department of the Treasury, Alcohol and Tobacco Tax and Trade Bureau (TTB)
+	- https://cran.r-project.org/web/packages/ttbbeer/ttbbeer.pdf
+	
 ### Packages GitHub only
+
+These packages can be installed with:
+
+```{r eval=FALSE}
+library(devtools)
+install_github("USERNAME/PACKAGENAME")
+```
+
+`USERNAME` refers to the user name of the developer of the package. For example, for the first package listed below, `USERNAME` is `hadley` and `PACKAGENAME` is `emo`.
+
+The package manuals are linked below, however developers of the packages might have additional information on the GitHub repo of the package.
 
 - emo: 
 	- The goal of emo(ji) is to make it very easy to insert emoji into RMarkdown documents 
 	- https://github.com/hadley/emo
-- Lahman:
-	- Provides the tables from the 'Sean Lahman Baseball Database' as a set of R data.frames. It uses the data on pitching, hitting and fielding performance and other tables from 1871 through 2015, as recorded in the 2016 version of the database. 
-	- https://cran.r-project.org/web/packages/Lahman/Lahman.pdf
 - gganimate:
 	- Create easy animations with ggplot2 
 	- https://github.com/dgrtwo/gganimate
-
 - emokid:
 	- For those times when you're having trouble expressing how you feel about your broken code.
 	- https://github.com/itsrainingdata/emokid
-
-- praise:
-	- https://cran.r-project.org/web/packages/praise/praise.pdf
-	- Build friendly R packages that praise their users if they have done something good, or they just need it to feel better.
-- suncalc:
-	- R interface to 'suncalc.js' library, part of the 'SunCalc.net' project <http://suncalc.net>, for calculating sun position, sunlight phases (times for sunrise, sunset, dusk, etc.), moon position and lunar phase for the given location and time.
-	- https://cran.r-project.org/web/packages/suncalc/suncalc.pdf
-
-- fortunes:
-	- A collection of fortunes from the R community
-	- https://cran.r-project.org/web/packages/fortunes/fortunes.pdf
-- cowsay:
-	- Allows printing of character strings as messages/warnings/etc. with ASCII animals, including cats, cows, frogs, chickens, ghosts, and more.
-	- https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html
-
 - prenoms:
 	- First names given to babies in metropolitan France between 1900 and 2015.
 	- https://github.com/ThinkR-open/prenoms
@@ -70,17 +86,12 @@ But really, one is enough. Pick a package from the list below, and use it to do 
 - cooking:
 	- Chopping, peeling, frying, and cooking various ingredients, and combining them to a delicious ragout. Also includes buying them from a local supermarket.
 	- https://github.com/krlmlr/cooking
-
 - kandinsky
 	- Turn any dataset into a Kandinsky paintingy
 	- https://github.com/gsimchoni/kandinsky
-
 - emoGG
 	- Use emoji in your ggplot2 plots.
 	- https://github.com/dill/emoGG
-- ttbbeer
-	- An R data package of beer statistics from U.S. Department of the Treasury, Alcohol and Tobacco Tax and Trade Bureau (TTB)
-	- https://github.com/jasdumas/ttbbeer
 - lego
 	- This R data package contains information about every Lego set manufactured from 1970 to 2015, a total of 6172 sets. 
 	- https://github.com/seankross/lego
@@ -88,8 +99,8 @@ But really, one is enough. Pick a package from the list below, and use it to do 
 	- Generate Bingo cards
 	- https://github.com/jennybc/bingo
 - CatterPlots
+  - Plots with Cats
 	- https://github.com/Gibbsdavidl/CatterPlots
-
 
 
 ## Accessing the assignment repo
@@ -100,11 +111,7 @@ Go to the #assignment-links channel on Slack and click on the link for mini-hw-0
 
 1. Install the package you pick. Depending on where the package comes from, how you install the package differs:
     - If the package is on CRAN (Comprehensive R Archive Network), you can install it with `install.packages`. 
-    - If the package is only on Github (most likely because it is still under development), you need to follow these steps in your Console:
-    ```{r eval=FALSE}
-    library(devtools)
-    install_github("username/packagename")
-    ```
+    - If the package is only on Github (most likely because it is still under development), you need to use the `install_github` function. See above for details.
 
 2. Regardless of how you installed the package you can load it with the `library` function.
 
