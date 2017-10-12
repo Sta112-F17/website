@@ -16,8 +16,7 @@ Your final grade will be comprised of the following:
  <span></span>        | <span></span>
 ----------------------|----------------
 Participation         | 10%
-In class Exercises    | 10%
-Mini Homework         | 5%
+Mini Homework & in-class exercises         | 15%
 Homework              | 30%
 Midterm 1             | 15%
 Midterm 2             | 15%
