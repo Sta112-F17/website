@@ -1,0 +1,64 @@
+---
+title: "Mini HW 09 - Getting started with modeling Paris Paintings"
+date: "Due: Oct 17 at 10:05am"
+author: "Team assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+The data can be found in the `\data` folder of your homework repository.
+
+Read the data with
+
+```{r eval=FALSE}
+pp <- read_csv("data/paris_paintings.csv")
+```
+
+Take a peek at the [codebook](https://www2.stat.duke.edu/courses/Fall15/sta112.01/data/paris_paintings.html).
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack and click on the link for mini-hw-07, and accept the assignment. Note that this is an individual assignment.
+
+### Assignment
+
+The models you fit should not be the exact same ones we reviewed in class (but they can share *some* explanatory variables, just not all).
+
+1. Fit a linear model for predicting log(price) of paintings based on a single numerical variable.
+
+- Find the slope and intercept of the model, and interpret each in context of the data.
+- Find and interpret the $R^2$ of the model.
+
+2. Fit a linear model for predicting log(price) of paintings based on a single categorical variable with two levels.
+
+- Find the slope and intercept of the model, and interpret each in context of the data.
+- Find and interpret the $R^2$ of the model.
+
+3. Fit a linear model for predicting log(price) of paintings based on a single categorical variable with more than two levels. If there are too many levels, consider collapsing down to a reasonable number first, then fit the model.
+
+- Find the slopes and intercept of the model, and interpret each in context of the data.
+- Find and interpret the $R^2$ of the model.
+
+4. Fit a linear model for predicting log(price) of paintings based on at least two variables (and not a ridiculous amount, be selective!). If some of your categorical variables have too many levels, consider collapsing down to a reasonable number first, then fit the model.
+
+- Find the slopes and intercept of the model, and interpret each in context of the data.
+- Find and interpret the $R^2$ of the model.
+
+
+### Grading
+
+Total                                                   | 20 pts
+--------------------------------------------------------|--------
+Questions 1 and 2                                       | 4 pts * 2 = 8 pts
+Questions 3 and 4                                       | 5 pts * 2 = 10 pts
+Code style and informatively named code chunks          | 1 pt
+Overall organization                                    | 1 pt

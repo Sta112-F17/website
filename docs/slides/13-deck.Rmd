@@ -1,0 +1,429 @@
+---
+title: "Multiple linear regression"
+author: "Dr. Çetinkaya-Rundel"
+date: "October 17, 2017"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    logo: img/sta112-hex.png
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+blue = "#425460"
+library(emo)
+```
+
+class: center, middle
+
+# Getting started
+
+---
+
+## Getting started
+
+- Any questions from last time?
+
+- Linear models with multiple predictors, interaction effects, and model selection
+
+---
+
+class: center, middle
+
+# Interaction effects
+
+---
+
+## Data: Paris Paintings
+
+```{r message=FALSE}
+library(tidyverse) # ggplot2 + dplyr + readr + and some others
+library(broom)
+```
+
+```{r message=FALSE}
+pp <- read_csv("data/paris_paintings.csv", na = c("n/a", "", "NA"))
+```
+
+---
+
+## New package: `forcats`
+
+**For** dealing with **cat**egocrical variable**s**
+
+![](img/13/forcats.png)
+
+```{r}
+library(forcats)
+```
+
+
+---
+
+## Data fixes 
+
+Collapse levels of `Shape` and `mat`erial variables.
+
+.small[
+```{r}
+pp <- pp %>%
+  mutate(
+    Shape = fct_collapse(Shape, oval = c("oval", "ovale"),
+                                round = c("round", "ronde"),
+                                squ_rect = "squ_rect",
+                                other = c("octogon", "octagon", "miniature")),
+    mat = fct_collapse(mat, metal = c("a", "br", "c"),
+                            canvas = c("co", "t", "ta"),
+                            paper = c("p", "ca"),
+                            wood = "b",
+                            other = c("e", "g", "h", "mi", "o", "pa", "v", "al", "ar", "m"))
+  )
+```
+]
+
+---
+
+## Review fixes
+
+.small[
+```{r}
+pp %>%
+  count(Shape)
+
+pp %>%
+  count(mat)
+```
+]
+
+---
+
+## Review: Main effects, numerical predictors
+
+```{r}
+(m_main_n <- lm(log(price) ~ Width_in + Height_in, data = pp))
+```
+
+---
+
+## Visualizing the model
+
+```{r echo=FALSE}
+library(rgl)
+library(knitr)
+```
+
+```{r webgl=TRUE, echo=FALSE}
+x = pp$Width_in
+y = pp$Height_in
+z = log(pp$price)
+plot3d(x, y, z, col = "black", xlab = "Width_in", ylab = "Height_in", zlab = "log(price)")
+rglwidget()
+```
+
+---
+
+## Visualizing the model, with the prediction surface
+
+```{r webgl=TRUE, echo=FALSE}
+x = pp$Width_in
+y = pp$Height_in
+z = log(pp$price)
+
+n = 20
+x = seq(min(x, na.rm = TRUE), max(x, na.rm = TRUE), length = n)
+y = seq(min(y, na.rm = TRUE), max(y, na.rm = TRUE), length = n)
+
+l = lm(log(price) ~ Width_in + Height_in, data = pp)
+
+f = function(x,y)
+{ 
+  predict(l, data.frame(Width_in = x, Height_in = y))
+}
+z = outer(x,y,f)
+
+surface3d(x, y, z, back = 'lines', front = 'lines', col = 'blue', lwd = 1.5, alpha = 0.4)
+rglwidget()
+```
+
+---
+
+## Review: Main effects, numerical and categorical predictors
+
+.small[
+```{r}
+pp_Surf_lt_5000 <- pp %>%
+  filter(Surface < 5000)
+m_main <- lm(log(price) ~ Surface + factor(artistliving), data = pp_Surf_lt_5000)
+round(exp(m_main$coefficients), 4)
+```
+]
+
+```{r include=FALSE}
+surf_coef <- tidy(m_main) %>% filter(term == "Surface") %>% pull(estimate) %>% exp() %>% round(4)
+artistliving_coef <- tidy(m_main) %>% filter(term == "factor(artistliving)1") %>% pull(estimate) %>% exp() %>% round(2)
+intercept <- tidy(m_main) %>% filter(term == "(Intercept)") %>% pull(estimate) %>% exp() %>% round(2)
+```
+
+- All else held constant, for each additional square inch in painting's surface area, the price of the painting is predicted, on average, to be higher by a factor of `r surf_coef`.
+
+- All else held constant, paintings by a living artist are predicted, on average, to be higher by a factor of `r artistliving_coef` compared to paintings by an artist who is no longer alive.
+
+- Paintings that are by an artist who is not alive and that have a surface area of 0 square inches are predicted, on average, to be `r intercept` livres.
+
+---
+
+## What went wrong?
+
+<div class="question">
+Why is our linear regression model different from what we got from `geom_smooth(method = "lm")`?
+</div>
+
+```{r echo=FALSE}
+ggplot(pp_Surf_lt_5000, aes(x = Surface, y = log(price), color = factor(artistliving))) + 
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm")
+```
+
+```{r echo=FALSE}
+ggplot(pp_Surf_lt_5000, aes(x = Surface, y = log(price), color = factor(artistliving))) + 
+  geom_point(alpha = 0.3) +
+  geom_abline(intercept = 4.8800835, slope = 0.0002653, color = "#F8766D", alpha = 0.75, size = 1.5) + 
+  geom_abline(intercept = (4.8800835+0.1372103), slope = 0.0002653, color = "#00BFC4", alpha = 0.75, size = 1.5)
+```
+
+
+---
+
+## What went wrong? (cont.)
+
+- The way we specified our model only lets `artistliving` affect the intercept.
+
+- Model implicitly assumes that paintings with living and deceased artists have the *same slope* and only allows for *different intercepts*.  
+
+- What seems more appropriate in this case? 
+    
+    * Same slope and same intercept for both colors
+    
+    * Same slope and different intercept for both colors
+    
+    * Different slope and different intercept for both colors?
+
+---
+
+## Interacting explanatory variables
+
+- Including an interaction effect in the model allows for different slopes, i.e. 
+nonparallel lines.
+
+- This implies that the regression coefficient for an explanatory variable would 
+change as another explanatory variable changes.
+
+- This can be accomplished by adding an interaction variable: the product of two 
+explanatory variables.
+
+---
+
+## Price vs. surface and artist living interacting
+
+.small[
+```{r fig.height=3.5}
+ggplot(data = pp_Surf_lt_5000,
+       mapping = aes(y = log(price), x = Surface, color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", fullrange = TRUE)
+```
+]
+
+---
+
+## Modeling with interaction effects
+
+.small[
+```{r}
+(m_int <- lm(log(price) ~ Surface * factor(artistliving), data = pp_Surf_lt_5000))
+```
+]
+
+$$ \widehat{log(price)} = 4.91 + 0.00021~surface - 0.126~artistliving + 0.00048~surface \times artistliving $$
+
+---
+
+## Interpretation of interaction effects
+
+- Rate of change in price as the surface area of the painting increases does 
+vary between paintings by living and non-living artists (different slopes), 
+
+- Some paintings by living artists are more expensive than paintings by
+non-living artists, and some are not (different intercept).
+
+.small[
+.pull-left[
+- Non-living artist: 
+$\widehat{log(price)} = 4.91 + 0.00021~surface$
+$- 0.126 \times 0 + 0.00048~surface \times 0$
+$= 4.91 + 0.00021~surface$
+
+- Living artist: 
+$\widehat{log(price)} = 4.91 + 0.00021~surface$
+$- 0.126 \times 1 + 0.00048~surface \times 1$
+$= 4.91 + 0.00021~surface$
+$- 0.126 + 0.00048~surface$
+$= 4.784 + 0.00069~surface$
+]
+.pull-right[
+```{r fig.height=4, echo = FALSE}
+ggplot(data = pp_Surf_lt_5000,
+       aes(y = log(price), x = Surface, color = factor(artistliving))) +
+  geom_point(alpha = 0.3) +
+  stat_smooth(method = "lm", fullrange = TRUE)
+```
+]
+]
+
+---
+
+## Third order interactions
+
+- Can you? Yes
+
+- Should you? Probably not if you want to interpret these interactions in context
+of the data.
+
+---
+
+class: center, middle
+
+# Quality of fit in MLR
+
+---
+
+## $R^2$
+
+- $R^2$ is the percentage of variability in the response variable explained by the 
+regression model.
+
+```{r}
+glance(m_main)$r.squared
+glance(m_int)$r.squared
+```
+
+--
+
+- Clearly the model with interactions has a higher $R^2$.
+
+--
+
+- However using $R^2$ for model selection in models with multiple explanatory 
+variables is not a good idea as $R^2$ increases when **any** variable is added to the 
+model.
+
+---
+
+## $R^2$ - first principles
+
+$$ R^2 =  \frac{ SS\_{Reg} }{ SS\_{Total} } = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \right) $$
+
+<div class="question">
+Calculate $R^2$ based on the output below.
+</div>
+
+```{r}
+anova(m_main)
+```
+
+---
+
+## Adjusted $R^2$
+
+$$ R^2\_{adj} = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \times \frac{n - 1}{n - k - 1} \right), $$
+
+where $n$ is the number of cases and $k$ is the number of predictors in the model
+
+--
+
+- Adjusted $R^2$ doesn't increase if the new variable does not provide any new 
+informaton or is completely unrelated.
+
+--
+
+- This makes adjusted $R^2$ a preferable metric for model selection in multiple
+regression models.
+
+---
+
+## In pursuit of Occam's Razor
+
+- Occam's Razor states that among competing hypotheses that predict equally well, 
+the one with the fewest assumptions should be selected.
+
+- Model selection follows this principle.
+
+- We only want to add another variable to the model if the addition of that
+variable brings something valuable in terms of predictive power to the model.
+
+- In other words, we prefer the simplest best model, i.e. **parsimonious** model.
+
+---
+
+## Comparing models
+
+It appears that adding the interaction actually increased adjusted $R^2$, so we 
+should indeed use the model with the interactions.
+
+```{r}
+glance(m_main)$adj.r.squared
+glance(m_int)$adj.r.squared
+```
+
+---
+
+class: center, middle
+
+# Model selection
+
+---
+
+## Backwards elimination
+
+- Start with **full** model (including all candidate explanatory variables and all
+candidate interactions)
+
+- Remove one variable at a time, and select the model with the highest adjusted $R^2$
+
+- Continue until adjusted $R^2$ does not increase
+
+---
+
+## Forward selection
+
+- Start with **empty** model
+
+- Add one variable (or interaction effect) at a time, and select the model with the 
+highest adjusted $R^2$
+
+- Continue until adjusted $R^2$ does not increase
+
+---
+
+## Model selection and interaction effects
+
+If an interaction is included in the model, the main effects of both of
+those variables must also be in the model
+
+---
+
+## Other model selection criteria
+
+- Adjusted $R^2$ is one model selection criterion
+
+- There are others out there (many many others!), we'll discuss some later in the 
+course, and some you might see in another courses
+
+
+
+
