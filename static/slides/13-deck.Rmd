@@ -127,31 +127,6 @@ rglwidget()
 
 ---
 
-## Visualizing the model, with the prediction surface
-
-```{r webgl=TRUE, echo=FALSE}
-x = pp$Width_in
-y = pp$Height_in
-z = log(pp$price)
-
-n = 20
-x = seq(min(x, na.rm = TRUE), max(x, na.rm = TRUE), length = n)
-y = seq(min(y, na.rm = TRUE), max(y, na.rm = TRUE), length = n)
-
-l = lm(log(price) ~ Width_in + Height_in, data = pp)
-
-f = function(x,y)
-{ 
-  predict(l, data.frame(Width_in = x, Height_in = y))
-}
-z = outer(x,y,f)
-
-surface3d(x, y, z, back = 'lines', front = 'lines', col = 'blue', lwd = 1.5, alpha = 0.4)
-rglwidget()
-```
-
----
-
 ## Review: Main effects, numerical and categorical predictors
 
 .small[
