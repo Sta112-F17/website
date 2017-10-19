@@ -43,7 +43,7 @@ or at http://ggplot2.tidyverse.org/reference/diamonds.html.
 
 The figure below can be helpful for understanding what the variables in the dataset mean.
 
-![diamond_measurements](img/07-mini-hw/diamond_measurements.png)
+![diamond_measurements](supplementary-files/07-mini-hw/diamond_measurements.png)
 
 Carat is a unit of mass equal to 200 mg and is used for measuring 
 gemstones and pearls. Cut grade is is an objective measure of a 
@@ -51,10 +51,10 @@ diamond's light performance, or, what we generally think of as sparkle.
 
 The figures below shows color grading of diamonds.
 
-![diamond_colors](img/07-mini-hw/diamond_colors.png)
+![diamond_colors](supplementary-files/07-mini-hw/diamond_colors.png)
 Lastly, the figure below shows clarity grading of diamonds:
 
-![diamond_clarity](img/07-mini-hw/diamond_clarity.png)
+![diamond_clarity](supplementary-files/07-mini-hw/diamond_clarity.png)
 
 
 ### Accessing the assignment repo

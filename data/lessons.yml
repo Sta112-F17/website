@@ -75,7 +75,7 @@ lessons:
     assignment: "01-case-study.html"
   - title: "Prediction and model validation"
     date: "Tue, Oct 24"
-    assignment: "HW2"
+    assignment: "02-hw.html"
   - title: "Estimation via bootstrapping"
     date: "Thur, Oct 26"  
   - title: "Hypothesis testing via simulation methods"

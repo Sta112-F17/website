@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(oilabs)
+library(tidyverse)
+data(evals)
+```
+
+```{r}
+evals_mod <- evals %>%
+  select(-c(bty_avg:pic_color))
+```
+
+```{r}
+write_csv(evals_mod, path = "evals-mod.csv")
+```
+
+```{r check, eval=FALSE}
+evals <- evals %>%
+  rowwise() %>%
+  mutate(
+    bty_avg_calc = round(mean(c(bty_f1lower, bty_f1upper, bty_f2upper, bty_m1lower, bty_m1upper, bty_m2upper)), 3),
+    diff = bty_avg_calc - bty_avg
+    )
+sum(evals$diff)
+```
+
