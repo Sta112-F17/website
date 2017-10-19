@@ -1,0 +1,192 @@
+---
+title: "Model selection"
+author: "Dr. Çetinkaya-Rundel"
+date: "October 19, 2017"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    logo: img/sta112-hex.png
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, show.signif.stars = FALSE)
+blue = "#425460"
+library(emo)
+```
+
+class: center, middle
+
+# Getting started
+
+---
+
+## Getting started
+
+- Any questions from last time?
+
+- Quality of fit and model selection
+
+---
+
+class: center, middle
+
+# Quality of fit in MLR
+
+---
+
+## Data: Paris Paintings
+
+From last time...
+
+```{r message=FALSE, warning = FALSE}
+library(tidyverse) # ggplot2 + dplyr + readr + and some others
+library(broom)
+```
+
+```{r message=FALSE}
+# Load data
+pp <- read_csv("data/paris_paintings.csv", na = c("n/a", "", "NA"))
+
+# Filter for paintings less than 5000 square inches
+pp_Surf_lt_5000 <- pp %>%
+  filter(Surface < 5000)
+  
+# Fit model with main effects only
+m_main <- lm(log(price) ~ Surface + factor(artistliving), 
+             data = pp_Surf_lt_5000)
+             
+# Fit model with main effects and interactions
+m_int <- lm(log(price) ~ Surface + factor(artistliving) +
+                         Surface * factor(artistliving), 
+            data = pp_Surf_lt_5000)
+```
+
+---
+
+## $R^2$
+
+- $R^2$ is the percentage of variability in the response variable explained by the 
+regression model.
+
+```{r}
+glance(m_main)$r.squared
+glance(m_int)$r.squared
+```
+
+--
+
+- Clearly the model with interactions has a higher $R^2$.
+
+--
+
+- However using $R^2$ for model selection in models with multiple explanatory 
+variables is not a good idea as $R^2$ increases when **any** variable is added to the 
+model.
+
+---
+
+## $R^2$ - first principles
+
+$$ R^2 =  \frac{ SS\_{Reg} }{ SS\_{Total} } = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \right) $$
+
+<div class="question">
+Calculate $R^2$ based on the output below.
+</div>
+
+```{r digits = 3}
+anova(m_main)
+```
+
+---
+
+## Adjusted $R^2$
+
+$$ R^2\_{adj} = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \times \frac{n - 1}{n - k - 1} \right), $$
+
+where $n$ is the number of cases and $k$ is the number of predictors in the model
+
+--
+
+- Adjusted $R^2$ doesn't increase if the new variable does not provide any new 
+informaton or is completely unrelated.
+
+--
+
+- This makes adjusted $R^2$ a preferable metric for model selection in multiple
+regression models.
+
+---
+
+## In pursuit of Occam's Razor
+
+- Occam's Razor states that among competing hypotheses that predict equally well, 
+the one with the fewest assumptions should be selected.
+
+- Model selection follows this principle.
+
+- We only want to add another variable to the model if the addition of that
+variable brings something valuable in terms of predictive power to the model.
+
+- In other words, we prefer the simplest best model, i.e. **parsimonious** model.
+
+---
+
+## Comparing models
+
+It appears that adding the interaction actually increased adjusted $R^2$, so we 
+should indeed use the model with the interactions.
+
+```{r}
+glance(m_main)$adj.r.squared
+glance(m_int)$adj.r.squared
+```
+
+---
+
+class: center, middle
+
+# Model selection
+
+---
+
+## Backwards elimination
+
+- Start with **full** model (including all candidate explanatory variables and all
+candidate interactions)
+
+- Remove one variable at a time, and select the model with the highest adjusted $R^2$
+
+- Continue until adjusted $R^2$ does not increase
+
+---
+
+## Forward selection
+
+- Start with **empty** model
+
+- Add one variable (or interaction effect) at a time, and select the model with the 
+highest adjusted $R^2$
+
+- Continue until adjusted $R^2$ does not increase
+
+---
+
+## Model selection and interaction effects
+
+If an interaction is included in the model, the main effects of both of
+those variables must also be in the model
+
+---
+
+## Other model selection criteria
+
+- Adjusted $R^2$ is one model selection criterion
+
+- There are others out there (many many others!), we'll discuss some later in the 
+course, and some you might see in another courses
+

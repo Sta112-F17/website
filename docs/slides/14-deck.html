@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Model selection</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dr. Çetinkaya-Rundel" />
+    <meta name="date" content="2017-10-19" />
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Model selection
+### Dr. Çetinkaya-Rundel
+### October 19, 2017
+
+---
+
+
+
+
+class: center, middle
+
+# Getting started
+
+---
+
+## Getting started
+
+- Any questions from last time?
+
+- Quality of fit and model selection
+
+---
+
+class: center, middle
+
+# Quality of fit in MLR
+
+---
+
+## Data: Paris Paintings
+
+From last time...
+
+
+```r
+library(tidyverse) # ggplot2 + dplyr + readr + and some others
+library(broom)
+```
+
+
+```r
+# Load data
+pp &lt;- read_csv("data/paris_paintings.csv", na = c("n/a", "", "NA"))
+
+# Filter for paintings less than 5000 square inches
+pp_Surf_lt_5000 &lt;- pp %&gt;%
+  filter(Surface &lt; 5000)
+  
+# Fit model with main effects only
+m_main &lt;- lm(log(price) ~ Surface + factor(artistliving), 
+             data = pp_Surf_lt_5000)
+             
+# Fit model with main effects and interactions
+m_int &lt;- lm(log(price) ~ Surface + factor(artistliving) +
+                         Surface * factor(artistliving), 
+            data = pp_Surf_lt_5000)
+```
+
+---
+
+## `\(R^2\)`
+
+- `\(R^2\)` is the percentage of variability in the response variable explained by the 
+regression model.
+
+
+```r
+glance(m_main)$r.squared
+```
+
+```
+## [1] 0.01320884
+```
+
+```r
+glance(m_int)$r.squared
+```
+
+```
+## [1] 0.0176922
+```
+
+--
+
+- Clearly the model with interactions has a higher `\(R^2\)`.
+
+--
+
+- However using `\(R^2\)` for model selection in models with multiple explanatory 
+variables is not a good idea as `\(R^2\)` increases when **any** variable is added to the 
+model.
+
+---
+
+## `\(R^2\)` - first principles
+
+$$ R^2 =  \frac{ SS\_{Reg} }{ SS\_{Total} } = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \right) $$
+
+&lt;div class="question"&gt;
+Calculate `\(R^2\)` based on the output below.
+&lt;/div&gt;
+
+
+```r
+anova(m_main)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: log(price)
+##                        Df  Sum Sq Mean Sq F value    Pr(&gt;F)
+## Surface                 1   138.5 138.537 40.6741 2.058e-10
+## factor(artistliving)    1     6.8   6.810  1.9994    0.1575
+## Residuals            3188 10858.4   3.406
+```
+
+---
+
+## Adjusted `\(R^2\)`
+
+$$ R^2\_{adj} = 1 - \left( \frac{ SS\_{Error} }{ SS\_{Total} } \times \frac{n - 1}{n - k - 1} \right), $$
+
+where `\(n\)` is the number of cases and `\(k\)` is the number of predictors in the model
+
+--
+
+- Adjusted `\(R^2\)` doesn't increase if the new variable does not provide any new 
+informaton or is completely unrelated.
+
+--
+
+- This makes adjusted `\(R^2\)` a preferable metric for model selection in multiple
+regression models.
+
+---
+
+## In pursuit of Occam's Razor
+
+- Occam's Razor states that among competing hypotheses that predict equally well, 
+the one with the fewest assumptions should be selected.
+
+- Model selection follows this principle.
+
+- We only want to add another variable to the model if the addition of that
+variable brings something valuable in terms of predictive power to the model.
+
+- In other words, we prefer the simplest best model, i.e. **parsimonious** model.
+
+---
+
+## Comparing models
+
+It appears that adding the interaction actually increased adjusted `\(R^2\)`, so we 
+should indeed use the model with the interactions.
+
+
+```r
+glance(m_main)$adj.r.squared
+```
+
+```
+## [1] 0.01258977
+```
+
+```r
+glance(m_int)$adj.r.squared
+```
+
+```
+## [1] 0.01676753
+```
+
+---
+
+class: center, middle
+
+# Model selection
+
+---
+
+## Backwards elimination
+
+- Start with **full** model (including all candidate explanatory variables and all
+candidate interactions)
+
+- Remove one variable at a time, and select the model with the highest adjusted `\(R^2\)`
+
+- Continue until adjusted `\(R^2\)` does not increase
+
+---
+
+## Forward selection
+
+- Start with **empty** model
+
+- Add one variable (or interaction effect) at a time, and select the model with the 
+highest adjusted `\(R^2\)`
+
+- Continue until adjusted `\(R^2\)` does not increase
+
+---
+
+## Model selection and interaction effects
+
+If an interaction is included in the model, the main effects of both of
+those variables must also be in the model
+
+---
+
+## Other model selection criteria
+
+- Adjusted `\(R^2\)` is one model selection criterion
+
+- There are others out there (many many others!), we'll discuss some later in the 
+course, and some you might see in another courses
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

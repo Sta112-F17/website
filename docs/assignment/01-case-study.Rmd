@@ -1,0 +1,76 @@
+---
+title: "Case study 01 - Model selection for Paris Paintings"
+date: "Due at the end of class on Oct 19"
+author: "Team assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+The data can be found in the `\data` folder of your homework repository.
+
+Read the data with
+
+```{r eval=FALSE}
+pp <- read_csv("data/paris_paintings.csv")
+```
+
+Take a peek at the [codebook](https://www2.stat.duke.edu/courses/Fall15/sta112.01/data/paris_paintings.html).
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack and click on the link for mini-hw-07, and accept the assignment.
+
+### Task
+
+In this case study your goal is to fit models that include both main and interaction effects and do model selection. 
+
+#### Planning:
+
+1. Decide on a subset of variables to consider for your analysis. Think 
+about it as focusing on certain aspects of the price determination, as opposed
+to all aspects. You're allowed a maximum of 10 total variables to consider, 
+including interactions. The more variables you consider the longer model 
+selection will take so keep that in mind.
+
+2. Decide among these which variables might make sense to interact. Remember, 
+we consider interactions when variables might behave differently for various 
+levels of another variable. Ideally, you would get some expert guidance for
+choosing which variables to interact, however the curators of the data are not 
+in class with you, so instead they have compiled a list of interactions that 
+might be potentially interesting:
+
+    - School of painting & landscape variables: `school_pntg` & `landsALL` / `lands_figs` /
+    `lands_ment`
+    - Landscapes & paired paintings: `landsALL` / `lands_figs` / `lands_ment` & `paired`
+    - Other artists & paired paintings: `othartist` & `paired`
+    - Size & paired paintings: `surface` & `paired`
+    - Size & figures: `surface` & `figures` / `nfigures`
+    - Dealer & previous owner: `dealer` & `prevcoll`
+    - Winning bidder & prevcoll: `endbuyer` & `prevcoll`
+    - Winning bidder & artist living: `winningbiddertype` & `artistliving`
+
+This is not an exhaustive list, so you might come up with others.
+
+#### Model fitting and selection:
+
+3. Use backwards elimination to do model selection. Make sure to show 
+each step of decision (though you don't have to interpret the models at 
+each stage).
+
+#### Model interpretation:  
+
+4. Provide interpretations for the slopes for the final model you arrive at 
+and create at least one visualization that supports your narrative.
+
+### Grading
+
+Check / no check
