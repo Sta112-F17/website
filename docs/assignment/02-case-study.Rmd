@@ -1,0 +1,37 @@
+---
+title: "Case study 02 - Model validation for course evals"
+date: "Due at the end of class on Oct 24"
+author: "Individual assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+The data can be found in the `\data` folder of your case study repository.
+
+Read the data with
+
+```{r eval=FALSE}
+evals <- read_csv("data/evals-mod.csv")
+```
+
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack and click on the link for mini-hw-07, and accept the assignment.
+
+### Task
+
+See today's slides.
+
+### Grading
+
+Check / no check

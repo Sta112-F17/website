@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediction and model validation</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dr. Çetinkaya-Rundel" />
+    <meta name="date" content="2017-10-24" />
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Prediction and model validation
+### Dr. Çetinkaya-Rundel
+### October 24, 2017
+
+---
+
+
+
+
+class: center, middle
+
+# Getting started
+
+---
+
+## Getting started
+
+- Peer evaluations due Wednesday 5pm
+
+- New teams on Thursday
+
+---
+
+class: center, middle
+
+# Model selection
+
+---
+
+## Data: Course evals
+
+
+```r
+library(tidyverse) # ggplot2 + dplyr + readr + and some others
+library(broom)
+```
+
+
+```r
+# Load data
+evals &lt;- read_csv("data/evals-mod.csv")
+
+# Calculate bty_avg
+evals &lt;- evals %&gt;%
+  rowwise() %&gt;%
+  mutate(bty_avg = mean(c(bty_f1lower, bty_f1upper, bty_f2upper, 
+                          bty_m1lower, bty_m1upper, bty_m2upper))) %&gt;%
+  ungroup()
+```
+
+---
+
+## Full model
+
+&lt;div class="question"&gt;
+What percent of the variability in evaluation scores is explained by the model?
+&lt;/div&gt;
+
+
+```r
+full_model &lt;- lm(score ~ rank + ethnicity + gender + language + 
+                         age + cls_perc_eval + cls_did_eval + 
+                         cls_students + cls_level + cls_profs + 
+                         cls_credits + bty_avg, data = evals)
+glance(full_model)$r.squared
+```
+
+```
+## [1] 0.1644867
+```
+
+```r
+glance(full_model)$adj.r.squared
+```
+
+```
+## [1] 0.1402959
+```
+
+---
+
+## Akaike Information Criterion
+
+$$ AIC = -2log(L) + 2k $$
+
+- `\(L\)`: likelihood	of the	model, i.e.	likelihood of seeing these data	given	the	model	
+parameters	
+- Applies	a	penalty	for	number of parameters in the	model, `\(k\)`	
+- Used for model selection, lower the better
+    - Value is not informative on its own
+- In R to get the AIC, use `AIC(model)`
+
+
+```r
+AIC(full_model)
+```
+
+```
+## [1] 695.7457
+```
+
+---
+
+## Model selection -- a little faster
+
+
+```r
+selected_model &lt;- step(full_model, direction = "backward")
+```
+
+
+```r
+AIC(selected_model)
+```
+
+```
+## [1] 687.5712
+```
+
+---
+
+## Parsimony
+
+&lt;div class="question"&gt;
+Take a look at the variables in the full and the selected model. Can you guess
+why some of them may have been dropped? Remember: We like parsimonous models.
+&lt;/div&gt;
+
+
+```r
+full_model$call
+```
+
+```
+## lm(formula = score ~ rank + ethnicity + gender + language + age + 
+##     cls_perc_eval + cls_did_eval + cls_students + cls_level + 
+##     cls_profs + cls_credits + bty_avg, data = evals)
+```
+
+```r
+selected_model$call
+```
+
+```
+## lm(formula = score ~ ethnicity + gender + language + age + cls_perc_eval + 
+##     cls_credits + bty_avg, data = evals)
+```
+
+---
+
+class: center, middle
+
+# Prediction
+
+---
+
+## New observation
+
+To make a prediction for a new observation we need to create a data frame with that observation.
+
+&lt;div class="question"&gt;
+Suppose we want to make a prediction for a 35 year old white woman professor who received her education at an English speaking country and who teaches a multi credit course. 80% of her classes tend to fill out evaluations, and she's average looiking (beauty score = 2.5).
+&lt;br&gt;&lt;br&gt;
+The following won't work. Why? How would you correct it?
+&lt;/div&gt;
+
+
+```r
+new_prof &lt;- data_frame(ethnicity = "white",
+                       sex = "woman",
+                       language = "English",
+                       age = 35, 
+                       cls_perc_eval = 0.80,
+                       cls_credits = "multi-credit",
+                       bty_avg = 2.5)
+```
+
+---
+
+## New observation, corrected
+
+
+```r
+new_prof &lt;- data_frame(ethnicity = "not minority",
+                       gender = "female",
+                       language = "english",
+                       age = 35, 
+                       cls_perc_eval = 0.80,
+                       cls_credits = "multi credit",
+                       bty_avg = 2.5)
+```
+
+---
+
+## Prediction
+
+
+```r
+predict(selected_model, newdata = new_prof)
+```
+
+```
+##        1 
+## 3.642981
+```
+
+---
+
+class: center, middle
+
+# Model validation
+
+---
+
+## Model validation
+
+- One commonly used model validation technique is to partition your data into training
+and testing set
+
+- That is, fit the model on the training data
+
+- And test it on the testing data
+
+- Evaluate model performance using `\(RMSE\)`, root-mean squared error
+
+$$ RMSE = \sqrt{\frac{\sum_{i = 1}^n (y_i - \hat{y}_i)^2}{n}} $$
+
+&lt;div class="question"&gt;
+Do you think we should prefer low or high RMSE?
+&lt;/div&gt;
+
+---
+
+## Random sampling and reproducibility
+
+Gotta set a seed!
+
+```r
+set.seed(25102017)
+```
+
+- Use different seeds from each other
+
+- Need inspiration? https://www.random.org/
+
+---
+
+## Add an identifier column: `index`
+
+
+```r
+evals &lt;- evals %&gt;%
+  mutate(index = 1:nrow(evals))
+```
+
+
+---
+
+## 80% training, 20% testing
+
+.pull-left[
+Create training dataset:
+
+```r
+training_data &lt;- evals %&gt;%
+  sample_frac(size = 0.8)
+nrow(training_data)
+```
+
+```
+## [1] 370
+```
+]
+
+.pull-right[
+Create testing dataset:
+
+```r
+testing_data &lt;- evals %&gt;%
+  anti_join(training_data, 
+            by = "index")
+nrow(testing_data)
+```
+
+```
+## [1] 93
+```
+]
+
+Check:
+
+```r
+(nrow(training_data) + nrow(testing_data)) == nrow(evals)
+```
+
+```
+## [1] TRUE
+```
+
+---
+
+## Your turn!
+
+
+```r
+# load packages
+library(tidyverse)
+library(broom)
+
+# set seed
+set.seed(123) #insert some value for the seed
+
+# add index
+evals &lt;- evals %&gt;%
+  mutate(index = 1:nrow(evals))
+
+# training data
+training_data &lt;- evals %&gt;%
+  sample_frac(size = 0.8)
+nrow(training_data)
+
+# testing data
+testing_data &lt;- evals %&gt;%
+  anti_join(training_data, by = "index")
+nrow(testing_data)
+
+# check
+(nrow(training_data) + nrow(testing_data)) == nrow(evals)
+```
+
+---
+
+## Step 1: Fit full model to training data
+
+&lt;div class="question"&gt;
+Compare the output of your full model with neighbors. Are the parameter
+estimates the same? Different? Very different?
+&lt;/div&gt;
+
+.small[
+
+```r
+full &lt;- lm(score ~ rank + ethnicity + gender + language + age + cls_perc_eval + cls_did_eval + 
+           cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = training_data)
+full
+```
+
+```
+## 
+## Call:
+## lm(formula = score ~ rank + ethnicity + gender + language + age + 
+##     cls_perc_eval + cls_did_eval + cls_students + cls_level + 
+##     cls_profs + cls_credits + bty_avg, data = training_data)
+## 
+## Coefficients:
+##           (Intercept)       ranktenure track            ranktenured  
+##             3.6748141             -0.1778738             -0.1075087  
+## ethnicitynot minority             gendermale    languagenon-english  
+##             0.1543111              0.1835562             -0.2465718  
+##                   age          cls_perc_eval           cls_did_eval  
+##            -0.0066084              0.0042989              0.0016229  
+##          cls_students         cls_levelupper        cls_profssingle  
+##            -0.0007173              0.0165106              0.0169324  
+## cls_creditsone credit                bty_avg  
+##             0.5098201              0.0691804
+```
+
+```r
+glance(full)$r.squared             
+```
+
+```
+## [1] 0.1865635
+```
+]
+
+---
+## Step 2: Model selection
+
+
+```r
+selected &lt;- step(full, direction = "backward")
+```
+
+&lt;div class="question"&gt;
+Compare your selected model with your teammates' selected models. Do you have the same variables chosen?
+&lt;/div&gt;
+
+
+```r
+selected$call
+```
+
+```
+## lm(formula = score ~ rank + ethnicity + gender + language + age + 
+##     cls_perc_eval + cls_credits + bty_avg, data = training_data)
+```
+
+---
+
+## Step 3: Prediction and RMSE
+
+Calculate predicted evaluation scores:
+
+
+```r
+y_hat &lt;- predict(selected, newdata = testing_data)
+```
+
+Calculate RMSE:
+
+
+```r
+(rmse &lt;- sqrt(sum((y_hat - testing_data$score)^2) / nrow(testing_data)))
+```
+
+```
+## [1] 0.5140652
+```
+
+&lt;div class="question"&gt;
+What is your RMSE? How does it compare to others'?
+&lt;/div&gt;
+
+---
+
+## RMSE on training vs. testing
+
+&lt;div class="question"&gt;
+Would you expect the RMSE to be higher for your training data or your testing data? Why?
+&lt;/div&gt;
+
+---
+
+## RMSE on training vs. testing
+
+RMSE for testing:
+
+```r
+sqrt(sum((y_hat - testing_data$score)^2) / 
+       nrow(testing_data))
+```
+
+```
+## [1] 0.5140652
+```
+
+RMSE for training:
+
+```r
+sqrt(sum((selected$fitted.values - training_data$score)^2) / 
+       nrow(training_data))
+```
+
+```
+## [1] 0.4958672
+```
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
