@@ -18,13 +18,34 @@ For this assignmenrt you will analyze the data from this study in order to learn
 
 The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is aslightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.
 
+## Codebook
+
+1. `score` - Average professor evaluation score: (1) very unsatisfactory - (5) excellent
+1. `rank` - Rank of professor: teaching, tenure track, tenure
+1. `ethnicity` - Ethnicity of professor: not minority, minority
+1. `gender` - Gender of professor: female, male
+1. `language` - Language of school where professor received education: english or non-english
+1. `age` - Age of professor
+1. `cls_perc_eval` - Percent of students in class who completed evaluation
+1. `cls_did_eval` - Number of students in class who completed evaluation
+1. `cls_students` - Total number of students in class
+1. `cls_level` - Class level: lower, upper
+1. `cls_profs` - Number of professors teaching sections in course in sample: single, multiple
+1. `cls_credits` - Number of credits of class: one credit (lab, PE, etc.), multi credit
+1. `bty_f1lower` - Beauty rating of professor from lower level female: (1) lowest - (10) highest
+1. `bty_f1upper` - Beauty rating of professor from upper level female: (1) lowest - (10) highest
+1. `bty_f2upper` - Beauty rating of professor from upper level female: (1) lowest - (10) highest
+1. `bty_m1lower` - Beauty rating of professor from lower level male: (1) lowest - (10) highest
+1. `bty_m1upper` - Beauty rating of professor from upper level male: (1) lowest - (10) highest
+1. `bty_m2upper` - Beauty rating of professor from upper level male: (1) lowest - (10) highest
 
 
 ## Part 1: Data Manipulation 
 
 1.  Create a new variable called `bty_avg` that is the average attractiveness
-    score of the six students for each professor. (Hint: Do this in one pipe, 
-    and use the `rowwise` function. See function help for more info.)
+    score of the six students for each professor (`bty_f1lower` through `bty_m2upper`). 
+    (Hint: Do this in one pipe, and use the `rowwise` function. See function help for 
+    more info.)
 
 ## Part 2: Exploratory Data Analysis
 

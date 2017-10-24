@@ -222,10 +222,33 @@ div.tocify {
 <p>Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. The article titled, ``Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity&quot; (Hamermesh and Parker, 2005) found that instructors who are viewed to be better looking receive higher instructional ratings. (Daniel S. Hamermesh, Amy Parker, Beauty in the classroom: instructors pulchritude and putative pedagogical productivity, Economics of Education Review, Volume 24, Issue 4, August 2005, Pages 369-376, ISSN 0272-7757, 10.1016/j.econedurev.2004.07.013. <a href="http://www.sciencedirect.com/science/article/pii/S0272775704001165" class="uri">http://www.sciencedirect.com/science/article/pii/S0272775704001165</a>.)</p>
 <p>For this assignmenrt you will analyze the data from this study in order to learn what goes into a positive professor evaluation.</p>
 <p>The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is aslightly modified version of the original data set that was released as part of the replication data for Data Analysis Using Regression and Multilevel/Hierarchical Models (Gelman and Hill, 2007).) The result is a data frame where each row contains a different course and columns represent variables about the courses and professors.</p>
+<div id="codebook" class="section level2">
+<h2>Codebook</h2>
+<ol style="list-style-type: decimal">
+<li><code>score</code> - Average professor evaluation score: (1) very unsatisfactory - (5) excellent</li>
+<li><code>rank</code> - Rank of professor: teaching, tenure track, tenure</li>
+<li><code>ethnicity</code> - Ethnicity of professor: not minority, minority</li>
+<li><code>gender</code> - Gender of professor: female, male</li>
+<li><code>language</code> - Language of school where professor received education: english or non-english</li>
+<li><code>age</code> - Age of professor</li>
+<li><code>cls_perc_eval</code> - Percent of students in class who completed evaluation</li>
+<li><code>cls_did_eval</code> - Number of students in class who completed evaluation</li>
+<li><code>cls_students</code> - Total number of students in class</li>
+<li><code>cls_level</code> - Class level: lower, upper</li>
+<li><code>cls_profs</code> - Number of professors teaching sections in course in sample: single, multiple</li>
+<li><code>cls_credits</code> - Number of credits of class: one credit (lab, PE, etc.), multi credit</li>
+<li><code>bty_f1lower</code> - Beauty rating of professor from lower level female: (1) lowest - (10) highest</li>
+<li><code>bty_f1upper</code> - Beauty rating of professor from upper level female: (1) lowest - (10) highest</li>
+<li><code>bty_f2upper</code> - Beauty rating of professor from upper level female: (1) lowest - (10) highest</li>
+<li><code>bty_m1lower</code> - Beauty rating of professor from lower level male: (1) lowest - (10) highest</li>
+<li><code>bty_m1upper</code> - Beauty rating of professor from upper level male: (1) lowest - (10) highest</li>
+<li><code>bty_m2upper</code> - Beauty rating of professor from upper level male: (1) lowest - (10) highest</li>
+</ol>
+</div>
 <div id="part-1-data-manipulation" class="section level2">
 <h2>Part 1: Data Manipulation</h2>
 <ol style="list-style-type: decimal">
-<li>Create a new variable called <code>bty_avg</code> that is the average attractiveness score of the six students for each professor. (Hint: Do this in one pipe, and use the <code>rowwise</code> function. See function help for more info.)</li>
+<li>Create a new variable called <code>bty_avg</code> that is the average attractiveness score of the six students for each professor (<code>bty_f1lower</code> through <code>bty_m2upper</code>). (Hint: Do this in one pipe, and use the <code>rowwise</code> function. See function help for more info.)</li>
 </ol>
 </div>
 <div id="part-2-exploratory-data-analysis" class="section level2">
