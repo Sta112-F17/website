@@ -422,14 +422,16 @@ y_hat &lt;- predict(selected, newdata = testing_data)
 
 Calculate RMSE:
 
+.small[
 
 ```r
-(rmse &lt;- sqrt(sum((y_hat - testing_data$score)^2) / nrow(testing_data)))
+(rmse &lt;- sqrt(sum((testing_data$score - y_hat)^2) / nrow(testing_data)))
 ```
 
 ```
 ## [1] 0.5140652
 ```
+]
 
 &lt;div class="question"&gt;
 What is your RMSE? How does it compare to others'?
@@ -448,26 +450,28 @@ Would you expect the RMSE to be higher for your training data or your testing da
 ## RMSE on training vs. testing
 
 RMSE for testing:
+.small[
 
 ```r
-sqrt(sum((y_hat - testing_data$score)^2) / 
-       nrow(testing_data))
+sqrt(sum((testing_data$score - y_hat)^2) /nrow(testing_data))
 ```
 
 ```
 ## [1] 0.5140652
 ```
+]
 
 RMSE for training:
+.small[
 
 ```r
-sqrt(sum((selected$fitted.values - training_data$score)^2) / 
-       nrow(training_data))
+sqrt(sum((training_data$score - selected$fitted.values)^2) / nrow(training_data))
 ```
 
 ```
 ## [1] 0.4958672
 ```
+]
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

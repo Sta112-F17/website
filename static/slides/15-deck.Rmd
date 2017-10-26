@@ -319,9 +319,11 @@ y_hat <- predict(selected, newdata = testing_data)
 
 Calculate RMSE:
 
+.small[
 ```{r}
-(rmse <- sqrt(sum((y_hat - testing_data$score)^2) / nrow(testing_data)))
+(rmse <- sqrt(sum((testing_data$score - y_hat)^2) / nrow(testing_data)))
 ```
+]
 
 <div class="question">
 What is your RMSE? How does it compare to others'?
@@ -340,13 +342,15 @@ Would you expect the RMSE to be higher for your training data or your testing da
 ## RMSE on training vs. testing
 
 RMSE for testing:
+.small[
 ```{r}
-sqrt(sum((y_hat - testing_data$score)^2) / 
-       nrow(testing_data))
+sqrt(sum((testing_data$score - y_hat)^2) /nrow(testing_data))
 ```
+]
 
 RMSE for training:
+.small[
 ```{r}
-sqrt(sum((selected$fitted.values - training_data$score)^2) / 
-       nrow(training_data))
+sqrt(sum((training_data$score - selected$fitted.values)^2) / nrow(training_data))
 ```
+]
