@@ -87,8 +87,6 @@ therefore she should be hired!).
 organ_donor <- read_csv("data/organ-donor.csv")
 organ_donor %>%
   count(outcome)
-
-p_hat <- 3 / 62
 ```
 
 ---
@@ -101,7 +99,7 @@ estimate the parameter using a **sample statistic** as a **point estimate**.
 $p~$: true rate of complication
 
 $\hat{p}~$: rate of complication in the sample = $\frac{3}{62}$ = 
-`r (p_hat = round(3/62,3))`
+`r round(3/62, 3)`
 
 ---
 
@@ -119,7 +117,7 @@ medical care, which can also lead to a lower complication rate.
 
 While it is not possible to assess the causal claim, it is still possible to test 
 for an association using these data. For this question we ask, could the low 
-complication rate of $\hat{p}$ = `r p_hat` be due to chance?
+complication rate of $\hat{p}$ = `r round(3/62, 3)` be due to chance?
 
 ---
 
@@ -217,7 +215,7 @@ chips. How many chips? What colors? What do the colors indicate? How many draws?
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # set seed
-set.seed(20171031)
+set.seed(20171011)
 
 # create sample space
 outcomes <- c("complication", "no complication")
@@ -290,13 +288,15 @@ We need a way to automate this process!
 
 ## Using `infer` to generate the null distribution
 
+.small[
 ```{r}
 null_dist <- organ_donor %>%
   specify(response = outcome) %>%
   hypothesize(null = "point", p = c("complication" = 0.10, "no complication" = 0.90)) %>% 
   generate(reps = 100, type = "simulate") %>% 
-  calculate(stat = "prop")
+  calculate(stat = "prop", success = "complication")
 ```
+]
 
 ```{r echo=FALSE}
 null_dist %>% 
@@ -352,7 +352,7 @@ ggplot(data = null_dist, mapping = aes(x = stat)) +
 
 ```{r}
 null_dist %>%
-  filter(stat <= p_hat) %>%
+  filter(stat <= (3/62)) %>%
   summarise(p_value = n()/nrow(null_dist))
 ```
 
@@ -402,15 +402,15 @@ consultant incurs a lower complication rate than 10% (overall US complication ra
 null_dist <- organ_donor %>%
   specify(response = outcome) %>%
   hypothesize(null = "point", p = c("complication" = 0.10, "no complication" = 0.90)) %>% 
-  generate(reps = 150, type = "simulate") %>% 
-  calculate(stat = "prop")
+  generate(reps = 15000, type = "simulate") %>% 
+  calculate(stat = "prop", success = "complication")
 
 ggplot(data = null_dist, mapping = aes(x = stat)) +
   geom_histogram(binwidth = 0.01) +
-  geom_vline(xintercept = p_hat, color = "red")
+  geom_vline(xintercept = 3/62, color = "red")
 
 null_dist %>%
-  filter(stat <= p_hat) %>%
+  filter(stat <= 3/62) %>%
   summarise(p_value = n()/nrow(null_dist))
 ```
 ]
@@ -629,7 +629,7 @@ ggplot(data = null_dist, mapping = aes(x = stat)) +
 
 ```{r}
 null_dist %>%
-  filter(stat >= p_hat) %>%
+  filter(stat >= 0.0441) %>%
   summarise(p_value = n()/nrow(null_dist))
 ```
 

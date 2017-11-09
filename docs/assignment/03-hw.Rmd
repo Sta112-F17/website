@@ -1,0 +1,160 @@
+---
+title: "HW 03 - Simulating sampling distributions and null distributions"
+date: "Due: Nov 14 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## Tasks
+
+<!-- Part 1: Sampling distributions of sample means -->
+
+### Part 1: Sampling distributions of sample means
+
+1. Load the following dataset:
+
+```{r read-num-pops}
+num_pops <- read_csv("data/num_pops.csv")
+```
+
+2. Each column represents a different population. Determine out how many columns 
+are in this dataset. Create a histogam of each of the populations, and describe
+their distributions. Specifically make sure to note the shape, center, and 
+spread of the distribution.
+
+3. Create a sampling distributions of sample means using *samples* of the 
+following sizes for each of the populations:
+
+    - n = 10
+    - n = 50
+    - n = 200
+
+Generate each sampling distribution using at least 15,000 samples. Note that sampling distributions are created by taking random samples, with replacement, from the original population.
+
+To help you out, here is the code for creating a sampling distribution for samples
+of size 5 with 20 samples for the population in column M of the data. Also make sure 
+to read the help for the `rep_sample_n` function. Note that this function is 
+in the `oilabs` package.
+
+```{r mean-sampling}
+sampling_mean_n5_rep20_M <- num_pops %>%
+  select(M) %>%                                          # select column M
+  rep_sample_n(size = 5, reps = 20, replace =  TRUE) %>% # 20 random samples w/ replacement,
+                                                         # each of size 5
+  group_by(replicate) %>%                                # group by each replicate
+  summarise(xbar = mean(M))                              # calculate the mean of each sample
+```
+
+Make sure to use clear naming convention for your sampling distributions. You can 
+follow the naming convention I used above for `sampling_mean_n5_rep20_M`, or choose a 
+different, but reasonable, style.
+
+3. For each sample size create two graphs:
+    - A visualization of a single sample.
+    - A visualization of the sampling distibution.
+
+4. Describe the shapes of your sampling distributions; calculate the centers (mean) 
+and the spreads (standard deviation). Compare these to shapes, centers, and spreads 
+of the parent population distributions from (1).
+
+5. Note the Central Limit Theorem for a single mean For each one of your samples,
+evaluate whether the Central Limit Theorem holds. If it does not, explain why.
+
+<!-- Part 2: Sampling distributions of sample proportions -->
+
+### Part 2: Sampling distributions of sample proportions
+
+1. Load the following dataset:
+
+```{r read-cat-pops}
+cat_pops <- read_csv("data/cat_pops.csv")
+```
+
+2. Each column represents a different population. Determine out how many columns 
+are in this dataset. Create a bar plot of each of the populations, and describe
+their distributions. Specifically make sure to note the proportion of successes.
+
+3. Create a sampling distributions of sample proportions using *samples* of the 
+following sizes for each of the populations:
+
+    - n = 10
+    - n = 50
+    - n = 200
+
+Generate each sampling distribution using at least 15,000 samples. Note that sampling distributions are created by taking random samples, with replacement, from the original population.
+
+To help you out, here is the code for creating a sampling distribution for samples
+of size 5 with 20 samples for the population in column A of the data.
+
+```{r prop-sampling}
+sampling_prop_n5_rep20_A <- cat_pops %>%
+  select(A) %>%                                          # select column A
+  rep_sample_n(size = 5, reps = 20, replace =  TRUE) %>% # 20 random samples w/ replacement,
+                                                         # each of size 5
+  group_by(replicate) %>%                                # group by each replicate
+  summarise(phat = sum(A == "success") / n())            # calculate the mean of each sample
+```
+
+Make sure to use clear naming convention for your sampling distributions. You can 
+follow the naming convention I used above for `sampling_prop_n5_rep20_A`, or choose a 
+different, but reasonable, style.
+
+3. For each sample size create two graphs:
+    - A visualization of a single sample.
+    - A visualization of the sampling distibution.
+
+4. Describe the shapes of your sampling distributions; calculate the centers (mean) 
+and the spreads (standard deviation). Compare the centers of your sampling distributions 
+to the true population proportions from Question (1)
+
+5. Note the Central Limit Theorem for a single proportion. For each one of your samples,
+evaluate whether the Central Limit Theorem holds. If it does not, explain why.
+
+<!-- Part 3: Simulations for hypothesis testing -->
+
+### Part 3: Simulations for hypothesis testing
+
+Describe precisely how you would set up the simulation for the following hypothesis tests. 
+Imagine using index cards or chips to represent the data. Also specify whether the null 
+hypothesis would be independence or point and whether the simulation type would be 
+bootstrap, simulate, or permute. In each of the scenarios you can assume sample size is
+100 and number of simulations is 15,000.
+
+- Describe the simulation process for testing for a single population standard deviation. 
+Suppose the research question is asking whether the standard deviation is less than 3, 
+and the observed sample proportion is 2.
+- Describe the simulation process for testing for the difference between two population proportions. Suppose the sample proportion of successes for sample A is 0.3 and for 
+sample B is 0.4.
+- Describe the simulation process for testing for a single population proportion. Suppose 
+the research question is asking whether proportion of successes is majority, and also that 
+the observed proportion of success is 0.6.
+- Describe the simulation process for testing for the difference between two population means. Suppose sample mean for sample A is 5 and for sample B is 3.
+
+## Tips
+
+- You're working in the same repo as your teammates now, so merge conflics will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.
+
+- Review the grading guidelines below and ask questions if any of the expectations are unclear.
+
+- Make sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).
+
+- Set aside time to work together and apart (physically).
+
+- When you're done, review the .md document on GitHub to make sure you're happy with the final state of your work. Then go get some rest!
+
+## Grading
+
+Total                                                   | 100 pts
+--------------------------------------------------------|--------
+Part 1: Sampling distributions of sample means          | 30 pts
+Part 2: Sampling distributions of sample proportions    | 30 pts
+Part 3: Simulations for hypothesis testing              | 20 pts
+Code quality                                            | 10 pts
+Document organization  (team name, code chunk names, commtis, overall organization, etc.)                                     | 10 pt

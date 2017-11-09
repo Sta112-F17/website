@@ -1,0 +1,264 @@
+---
+title: "Inference overview"
+author: "Dr. Çetinkaya-Rundel"
+date: "November 7, 2017"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    logo: img/sta112-hex.png
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE      # for regression output
+  )
+# Set dpi and height for images
+library(knitr)
+opts_chunk$set(fig.height = 2.65, dpi = 300) 
+# ggplot2 color palette with gray
+color_palette <- list(gray = "#999999", 
+                      salmon = "#E69F00", 
+                      lightblue = "#56B4E9", 
+                      green = "#009E73", 
+                      yellow = "#F0E442", 
+                      darkblue = "#0072B2", 
+                      red = "#D55E00", 
+                      purple = "#CC79A7")
+# For nonsese...
+library(emo)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(openintro)
+library(infer)
+library(tidyverse)
+library(gridExtra)
+```
+
+
+class: center, middle
+
+# Getting started
+
+---
+
+## Getting started
+
+- Any questions from last time?
+
+---
+
+class: center, middle
+
+# Inference overview
+
+---
+
+## What do you want to do?
+
+- Estimation -> Confidence interval
+
+- Decision -> Hypothesis test
+
+- First step: Ask the following questions
+
+  1. How many variables?
+  2. What types of variables?
+  3. What is the research question?
+
+---
+
+class: center, middle
+
+# Confidence intervals
+
+---
+
+## Confidence intervals
+
+- Bootstrap
+
+- Bounds: cutoff values for the middle XX% of the distribution
+
+- Interpretation: We are XX% confident that the true population parameter is in the interval.
+
+- Definition of confidence level: XX% of random samples of size n are expected to produce confidence intervals that contain the true population parameter.
+
+---
+
+## Confidence intervals exercises
+
+<div class="question">
+`r emo::ji("busts_in_silhouette")` Write up the answer to the the question assigned to your team, then present. Imagine using index cards or chips to represent the data.
+
+<ul>
+<li> tidyverse: Describe the bootstrapping process for estimating a single population median.
+<li> team name: Describe the bootstrapping process for estimating a single population proportion.
+<li> daca: Describe the bootstrapping process for estimating the difference between two population means.
+<li> potato: Describe the bootstrapping process for estimating the difference between two population proportions.
+<li> p-r-simonious: Describe the bootstrapping process for estimating a single population standard deviation.
+</ul>
+</div>
+
+---
+
+## Accuracy vs. precision
+
+![accuracy vs. precision](img/18/garfield.png)
+
+---
+
+## Accuracy vs. precision
+
+<div class="question">
+`r emo::ji("busts_in_silhouette")` What happens to the width of the confidence interval as the confidence level increases? Why? Should we always prefer a confidence interval with a higher confidence level?
+</div>
+
+---
+
+## Sample size and width of intervals
+
+```{r echo = FALSE, message=FALSE, fig.width=10, fig.height=7}
+set.seed(20171107)
+acs_emp <- acs12 %>% filter(employment == "employed", income > 0)
+acs_10 <- acs_emp %>% sample_n(10) %>%
+  specify(response = income) %>%
+  generate(100, type = "bootstrap") %>%
+  calculate(stat = "median")
+acs_100 <- acs_emp %>% sample_n(100) %>%
+  specify(response = income) %>%
+  generate(100, type = "bootstrap") %>%
+  calculate(stat = "median")
+acs_500 <- acs_emp %>% sample_n(500) %>%
+  specify(response = income) %>%
+  generate(100, type = "bootstrap") %>%
+  calculate(stat = "median")
+p1 <- ggplot(acs_10, aes(x = stat)) + geom_histogram(binwidth = 5000) + xlim(0, 120000) + ggtitle("Sample size = 10")
+p2 <- ggplot(acs_100, aes(x = stat)) + geom_histogram(binwidth = 5000) + xlim(0, 120000) + ggtitle("Sample size = 100")
+p3 <- ggplot(acs_500, aes(x = stat)) + geom_histogram(binwidth = 5000) + xlim(0, 120000) + ggtitle("Sample size = 500")
+gridExtra::grid.arrange(p1, p2, p3, ncol = 1)
+```
+
+
+---
+
+## Equivalency of confidence and significance levels
+
+- Two sided alternative HT with $\alpha$ $\rightarrow$ $CL = 1 - \alpha$
+- One sided alternative HT with $\alpha$ $\rightarrow$ $CL = 1 - (2 \times \alpha)$
+
+```{r echo = FALSE, message=FALSE, fig.width=10, fig.height=4}
+library(openintro)
+par(mfrow = c(1,2))
+normTail(U = 1.96, L = -1.96, df = 100, col = "#56B4E9", axes = FALSE)
+text(x = 0, y = 0.15, "0.95", col = "#56B4E9", cex = 2)
+text(x = -3, y = 0.05, "0.025", col = "#56B4E9", cex = 1.5)
+text(x = 3, y = 0.05, "0.025", col = "#56B4E9", cex = 1.5)
+#
+normTail(U = 1.65, L = -1.65, df = 100, col = "#56B4E9", axes = FALSE)
+normTail(U = 1.65, df = 100, col = "gray", add = TRUE, axes = FALSE)
+text(x = 0, y = 0.15, "0.90", col = "#56B4E9", cex = 2)
+text(x = -3, y = 0.05, "0.05", col = "#56B4E9", cex = 1.5)
+text(x = 3, y = 0.05, "0.05", col = "gray", cex = 1.5)
+```
+
+---
+
+## Interpretation of confidence intervals
+
+<div class="question">
+`r emo::ji("bust_in_silhouette")` Which of the following is more informative: 
+
+<ul>
+<li> The difference in price of a gallon of milk between Whole Foods and Harris Teeter is 30 cents.
+<li> A gallon of milk costs 30 cents more at Whole Foods compared to Harris Teeter.
+</ul>
+</div>
+
+--
+
+<div class="question">
+`r emo::ji("bust_in_silhouette")` What does your answer tell you about interpretation of confidence intervals for differences between two population parameters?
+</div>
+
+---
+
+class: center, middle
+
+# Hypothesis tests
+
+---
+
+## Hypothesis testing
+
+- Set the hypotheses.
+
+- Calculate the observed sample statistic.
+
+- Calculate the p-value.
+
+- Make a conclusion, about the hypotheses, in context of the data and the research question.
+
+---
+
+## Hypothesis testing exercises
+
+<div class="question">
+`r emo::ji("busts_in_silhouette")` Write up the answer to the the question assigned to your team, then present. Imagine using index cards or chips to represent the data. Specify whether the null hypothesis would be independence or point and whether the simulation type would be bootstrap, simulate, or permute.
+
+<ul>
+<li> tidyverse: Describe the simulation process for testing for a single population standard deviation.
+<li> team name: Describe the simulation process for testing for the difference between two population proportions.
+<li> daca: Describe the simulation process for testing for a single population proportion.
+<li> potato: Describe the simulation process for testing for the difference between two population means.
+<li> p-r-simonious: Describe the simulation process for a single population median.
+</ul>
+</div>
+
+---
+
+## Testing errors
+
+- Type 1: Reject $H_0$ when you shouldn't have
+    + P(Type 1 error) = $\alpha$
+    
+- Type 2: Fail to reject $H_0$ when you should have
+    + P(Type 2 error) is harder to calculate, but increases as $\alpha$ decreases
+
+<div class="question">
+`r emo::ji("bust_in_silhouette")` In a court of law
+
+<ul>
+<li> Null hypothesis: Defendant is innocent
+<li> Alternative hypothesis: Defendant is guilty
+</ul>
+
+Which is worse: Type 1 or Type 2 error?
+</div>
+
+---
+
+## Probabilities of testing errors
+
+- P(Type 1 error) = $\alpha$
+
+- P(Type 2 error) = 1 - Power
+
+- Power = P(correctly rejecting the null hypothesis)
+
+
+<div class="question">
+`r emo::ji("busts_in_silhouette")` Fill in the blanks in terms of correctly/incorrectly rejecting/failing to reject the null hypothesis:
+
+<ul>
+<li> $alpha$ is the probability of ___.
+<li> 1 - Power is the probability of ___.
+</ul>
+</div>

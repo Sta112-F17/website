@@ -84,10 +84,6 @@ organ_donor %&gt;%
 ## 2 no complication    59
 ```
 
-```r
-p_hat &lt;- 3 / 62
-```
-
 ---
 
 ## Parameter vs. statistic
@@ -216,11 +212,11 @@ chips. How many chips? What colors? What do the colors indicate? How many draws?
 ```
 ## sim1
 ##    complication no complication 
-##               5              57
+##               3              59
 ```
 
 ```
-## [1] 0.08064516
+## [1] 0.0483871
 ```
 
 ![](17-deck_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
@@ -233,11 +229,11 @@ chips. How many chips? What colors? What do the colors indicate? How many draws?
 ```
 ## sim2
 ##    complication no complication 
-##               8              54
+##               9              53
 ```
 
 ```
-## [1] 0.1290323
+## [1] 0.1451613
 ```
 
 ![](17-deck_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
@@ -251,11 +247,11 @@ chips. How many chips? What colors? What do the colors indicate? How many draws?
 ```
 ## sim3
 ##    complication no complication 
-##               2              60
+##               8              54
 ```
 
 ```
-## [1] 0.03225806
+## [1] 0.1290323
 ```
 
 ![](17-deck_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
@@ -270,14 +266,16 @@ We need a way to automate this process!
 
 ## Using `infer` to generate the null distribution
 
+.small[
 
 ```r
 null_dist &lt;- organ_donor %&gt;%
   specify(response = outcome) %&gt;%
   hypothesize(null = "point", p = c("complication" = 0.10, "no complication" = 0.90)) %&gt;% 
   generate(reps = 100, type = "simulate") %&gt;% 
-  calculate(stat = "prop")
+  calculate(stat = "prop", success = "complication")
 ```
+]
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -289,23 +287,23 @@ null_dist &lt;- organ_donor %&gt;%
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 0.081 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.161 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 0.177 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.081 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 0.016 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.161 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 0.113 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.145 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 0.081 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.097 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
@@ -357,7 +355,7 @@ observed sample proportion?
 
 ```r
 null_dist %&gt;%
-  filter(stat &lt;= p_hat) %&gt;%
+  filter(stat &lt;= (3/62)) %&gt;%
   summarise(p_value = n()/nrow(null_dist))
 ```
 
@@ -365,7 +363,7 @@ null_dist %&gt;%
 ## # A tibble: 1 x 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1    0.03
+## 1    0.12
 ```
 
 
@@ -415,27 +413,27 @@ consultant incurs a lower complication rate than 10% (overall US complication ra
 null_dist &lt;- organ_donor %&gt;%
   specify(response = outcome) %&gt;%
   hypothesize(null = "point", p = c("complication" = 0.10, "no complication" = 0.90)) %&gt;% 
-  generate(reps = 150, type = "simulate") %&gt;% 
-  calculate(stat = "prop")
+  generate(reps = 15000, type = "simulate") %&gt;% 
+  calculate(stat = "prop", success = "complication")
 
 ggplot(data = null_dist, mapping = aes(x = stat)) +
   geom_histogram(binwidth = 0.01) +
-  geom_vline(xintercept = p_hat, color = "red")
+  geom_vline(xintercept = 3/62, color = "red")
 ```
 
 ![](17-deck_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 
 ```r
 null_dist %&gt;%
-  filter(stat &lt;= p_hat) %&gt;%
+  filter(stat &lt;= 3/62) %&gt;%
   summarise(p_value = n()/nrow(null_dist))
 ```
 
 ```
 ## # A tibble: 1 x 1
-##      p_value
-##        &lt;dbl&gt;
-## 1 0.07333333
+##     p_value
+##       &lt;dbl&gt;
+## 1 0.1193333
 ```
 ]
 
@@ -678,7 +676,7 @@ as the observed difference in sample proportions?
 
 ```r
 null_dist %&gt;%
-  filter(stat &gt;= p_hat) %&gt;%
+  filter(stat &gt;= 0.0441) %&gt;%
   summarise(p_value = n()/nrow(null_dist))
 ```
 
@@ -686,7 +684,7 @@ null_dist %&gt;%
 ## # A tibble: 1 x 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1    0.28
+## 1    0.37
 ```
 
 ---

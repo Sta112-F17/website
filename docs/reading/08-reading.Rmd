@@ -1,0 +1,18 @@
+---
+title: "Reading 08"
+date: "Due: Nov 9 at 10:05am"
+output: 
+  html_document: 
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- [OpenIntro - Intro Stat with Randomization and Simulation](https://drive.google.com/file/d/0B-DHaDEbiOGkRHNndUlBaHVmaGM/view):
+    - 2.5 Central Limit Theorem
+    - 2.6 Normal distribution
+    - 2.7 Applying the normal model
+    - 2.8 Confidence intervals
+    - 5.4 Inference for linear regression
