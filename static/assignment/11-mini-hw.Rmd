@@ -1,0 +1,96 @@
+---
+title: "Mini HW 11 - Inferring from the GSS, Pt 2"
+date: "Due: Nov 16 at 10:05am"
+author: "Team assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+In this case study, and in the subsequent mini homework, you will work with the 2016
+General Social Survey (GSS). The data can be found in the `\data` folder of your 
+assignment repository. This is an excerpt from the 2016 GSS containing only the variables 
+that will be used for these two assignments. We're not distributing the entire dataset
+in order to keep the size of the dataset reasonable.
+
+You can load the data with
+
+```{r eval=FALSE}
+gss16 <- read_csv("data/gss16_excerpt.csv")
+```
+
+Some of the questions ask about conditions for inference. Note that the GSS employs 
+random sampling.
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack, click on the link, and accept the assignment.
+
+### Tasks
+
+#### Part 1:
+
+As a follow up to the case study you worked on in class, you will evaluate whether Americans 
+who identify as Republican and Democrat feel differently about evolution. In addition to the
+`EVOLUTION` variable you will also use the `PARTYID` variable. This variable stores answers
+to the following question:
+
+> Generally speaking, do you usually think of yourself as a Republican, Democrat, Independent, or what?
+
+1. Create a new data frame that omits respondents who identify as Independent (as well as Independent and near Republican or Democrat) as well as those who identify as other party. This information is in the `PARTYID` variable. Also in this data frame combine the levels of STRONG DEMOCRAT and NOT STR DEMOCRAT to DEMOCRAT and STRONG REPUBLICAN and NOT STR REPUBLICAN to REPUBLICAN. How many observations are in this data frame?
+2. Summarise the distribution of responses to EVOLVED based on updated party affiliation variable.
+3. Is the independence condition satisfied for these data? Explain your reasoning.
+4. Write the hypotheses for testing for a difference between the percent of Democrats and Republicans who believe in evolution.
+5. Conduct the hypothesis test ...
+  a. Using simulation based methods.
+  b. Using CLT based methods (only if the sample size condition is satisfied). You will need to use the `prop.test` function to conduct the test.
+     
+    ```{r eval=FALSE}
+    prop.test(x = [number of successes], n = [sample size], alternative = "two.sided")
+    ```
+
+**Note:** Number of successes and sample size are both vectors of length 2, one entry for Democrats and one for Republicans, e.g. if 10 out of 40 Republicans and 30 out of 50 Democrats believe in evolution: `x = c(10, 30)` and `n = c(40, 50)`.
+
+6. Do your hypothesis tests produce roughly similar results?
+7. Pick one of the p-values and interpret it in context of the data.
+
+<br>
+
+#### Part 2:
+
+Next we take a look at how much time Americans spend on email. The GSS asks
+
+> About how many minutes or hours per week do you spend sending and answering electronic mail or e-mail?
+
+The answers to this question are stored in `EMAILHR` and `EMAILMIN`. The sum of these variables
+define the total amount of time respondents spend on email.
+
+1. Calculate the email use in minutes using `EMAILHR` and `EMAILMIN`, and store this information
+in a new variable called `EMAILTIME`.
+2. Visualize the distribution of `EMAILTIME`. What is the sample mean?
+3. Write the hypotheses for evaluating whether Americans spend, on average, less than an hour per day (420 minutes) sending and answering email?
+4. Conduct the hypothesis test ...
+    a. Using simulation based methods.
+    b. Using CLT based methods (only if the sample size condition is satisfied). You will need to use the `t.test` function to conduct the test.
+     
+    ```{r eval=FALSE}
+    t.test(gss$EMAIL, mu = 420, alternative = "less")
+    ```
+     
+5. Do your hypothesis tests produce roughly similar results?
+
+### Grading
+
+Total                                                       | 100 pts
+------------------------------------------------------------|--------
+Part 1                                                      | 55 pts
+Part 2                                                      | 35 pts
+Overall organization, code quakity, clarity, commits, etc.  | 10 pts

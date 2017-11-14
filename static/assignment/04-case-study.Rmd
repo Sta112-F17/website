@@ -1,0 +1,62 @@
+---
+title: "Case study 04 - Inferring from the GSS, Pt 1"
+date: "Due at the end of class on Nov 14"
+author: "Team assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+In this case study, and in the subsequent mini homework, you will work with the 2016
+General Social Survey (GSS). The data can be found in the `\data` folder of your 
+assignment repository. This is an excerpt from the 2016 GSS containing only the variables 
+that will be used for these two assignments. We're not distributing the entire dataset
+in order to keep the size of the dataset reasonable.
+
+You can load the data with
+
+```{r eval=FALSE}
+gss16 <- read_csv("data/gss16_excerpt.csv")
+```
+
+Some of the questions ask about conditions for inference. Note that the GSS employs 
+random sampling.
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack, click on the link, and accept the assignment.
+
+### Task
+
+First focus is Americans' "belief" in evolution. The GSS asks
+
+> Human beings, as we know them today, developed from earlier species of animals. (Is that true or false?)
+
+The responses to this question are stored in the variable called `EVOLVED`.
+
+1. Create a new data frame that omits `NA` values for the `EVOLVED` variable. How many observations are in this data frame?
+2. Summarise the distribution of responses to this question.
+3. Is the independence condition satisfied for these data? Explain your reasoning.
+4. Estimate and interpret the proportion of Americans who believe in evolution with a 95% confidence interval...
+    a. Using simulation based methods.
+    b. Using CLT based methods (only if the sample size condition is satisfied). You will need to use the `prop.test` function to build this interval.
+
+    ```{r eval=FALSE}
+    prop.test(x = [number of successes], n = [sample size], conf.level = 0.95)
+    ```
+
+5. Do your intervals produce roughly similar results?
+6. If we were to use 99% confidence level, would the widths of your intervals be the same, larger, or smaller as the widths of the respective 95% confidence intervals?
+7. Construct the 99% confidence intervals, and comment on whether your answer from part (e) is confirmed.
+
+### Grading
+
+Check / no check
