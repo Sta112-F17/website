@@ -1,0 +1,43 @@
+---
+title: "HW 04 - Final project proposal"
+date: "Due: Nov 28 at midnight"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a draft of the introduction section of your project as well as a 
+data analysis plan and your dataset.
+
+- Introduction: The introduction should introduce your general research 
+question (this should include your hypothesized answer) and your data 
+(where it came from, how it was collected, what are the cases, what are the 
+variables, etc.).
+
+- Data analysis plan: The data analysis plan should include:
+
+1. The comparison groups you will use, if applicable.
+2. The outcome (dependent, response, Y) and predictor (independent, explanatory, 
+X) variables you will use to answer your question.
+3. The statistical method(s) that you believe will be useful in answering your 
+question(s). (You can update these later as you work on your project.)
+4. What results from these specific statistical methods are needed to support 
+your hypothesized answer?
+
+Each section should be no more than 1 page (excluding figures). Your write up and 
+all typesetting must be done with using R Markdown. 
+
+### Grading
+
+Total                                                   | 50 pts
+--------------------------------------------------------|--------
+Introduction                                            | 20 pts
+Data analysis plan                                      | 15 pts
+Data                                                    | 10 pts
+Organization and code quality                           | 5 pts

@@ -1,0 +1,60 @@
+---
+title: "Mini HW 12 - Web scraping"
+date: "Due: Nov 21 at 10:05am"
+author: "Individual assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Accessing the data
+
+This time you'll be collecting the data!
+
+### Accessing the assignment repo
+
+Go to the #assignment-links channel on Slack, click on the link, and accept the assignment.
+
+### Tasks
+
+1. Scrape the list of most popular TV shows on IMDB: http://www.imdb.com/chart/tvmeter. The result should be a data frame with 100 rows and 4 columns: rank, movie name, year, rating. The variables should be in this order (which is different than the order we had them in class for a similar exercise).
+
+This will result in a long data frame. Suppose your data frame is called `df`. You can use the following to print this as a scrollable table.
+
+```{r eval=FALSE}
+library(knitr)
+library(kableExtra)
+
+kable(df, format = "html") %>%
+  kable_styling() %>%
+  scroll_box(width = "900px", height = "400px")
+```
+
+Note: This will require that `knitr` and `kableExtra` packages are installed. You can install them with the `install.packages` function.
+
+2. For the *first three* movies scrape their pages for the following information.
+  - How many episodes so far
+  - Certificate
+  - First five plot keywords
+  - Genres
+  - Runtime
+  - Country
+  - Language
+  
+The result should be a data frame with 3 rows and 11 columns: the first 4 columns coming from the information in the first exercise, and the other seven columns coming from the information you collect in this exercise.
+
+Note that this exercise will require some repetitive work, and that's the point (next class we'll learn how to automate this process). You should thrive on writing some code that works for the page of the first show, and then be able to reuse this code for the pages of the other two shows.
+
+### Grading
+
+Total                                                       | 60 pts
+------------------------------------------------------------|--------
+Question 1                                                  | 20 pts
+Question 2                                                  | 30 pts
+Overall organization, code quakity, clarity, commits, etc.  | 10 pts
