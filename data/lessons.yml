@@ -117,6 +117,7 @@ lessons:
     date: "Thur, Nov 23"
   - title: "Interactive visualizations with Shiny, Pt 1"
     date: "Tue, Nov 28"
+    slides: "23-deck.pdf"
     assignment: "04-hw.html"
   - title: "Interactive visualizations with Shiny, Pt 2"
     date: "Thur, Nov 30"
