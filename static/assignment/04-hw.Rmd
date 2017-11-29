@@ -23,15 +23,15 @@ variables, etc.).
 - Data analysis plan: The data analysis plan should include:
 
 1. The comparison groups you will use, if applicable.
-2. The outcome (dependent, response, Y) and predictor (independent, explanatory, 
-X) variables you will use to answer your question.
-3. The statistical method(s) that you believe will be useful in answering your 
-question(s). (You can update these later as you work on your project.)
-4. What results from these specific statistical methods are needed to support 
-your hypothesized answer?
+2. The outcome (dependent, response, Y) and predictor (independent, explanatory, X) variables you will use to answer your question.
+3. The statistical method(s) that you believe will be useful in answering your question(s). (You can update these later as you work on your project.)
+4. What results from these specific statistical methods are needed to support your hypothesized answer?
 
-Each section should be no more than 1 page (excluding figures). Your write up and 
-all typesetting must be done with using R Markdown. 
+- Data: Print out your entire dataset, or a representative subset of it. Use a scrollable 
+table if this is long. 
+
+Each section should be no more than 1 page (excluding figures). You can check a print preview
+to confirm length. Your write up and all typesetting must be done with using R Markdown.
 
 ### Grading
 
