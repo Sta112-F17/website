@@ -121,6 +121,7 @@ lessons:
     assignment: "04-hw.html"
   - title: "Interactive visualizations with Shiny, Pt 2"
     date: "Thur, Nov 30"
+    assignment: "07-case-study.html"
   - title: "Bayesian inference"
     date: "Tue, Dec 5"
   - title: "Final project presentations"

@@ -1,0 +1,22 @@
+---
+title: "Case study 07 - Shiny-fy your project"
+date: "Due at the end of class on Nov 30"
+author: "Individual assignment"
+output: 
+  html_document: 
+    theme: yeti
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Even though you're working in teams on your project, you will be working individually on this case
+study. But you can definitely collaborate with your teammates.
+
+Task 1. Create a simple Shiny app that uses your project data.  
+Task 2. Embed this Shiny app in an R Markdown document.
+
+You do not have to include this in your project, but you can if you want.
