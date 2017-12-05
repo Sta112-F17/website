@@ -124,6 +124,7 @@ lessons:
     assignment: "07-case-study.html"
   - title: "Bayesian inference"
     date: "Tue, Dec 5"
+    slides: "24-deck.html"
   - title: "Final project presentations"
     date: "Thur, Dec 7"
     assignment: "final-project.html"

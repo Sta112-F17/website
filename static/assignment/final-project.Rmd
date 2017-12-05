@@ -151,8 +151,9 @@ Team peer evaluaiton           | 10 pts
 Repo and document organization | 10 pts
 
 **Team peer evaluation:** You will be asked to fill out a survey where you 
-rate the contribution of each team member out of 10 points. Filling our 
-the survey is a prerequisite for getting credit on the team member evaluation.
+rate the contribution and teamwork of each team member out of 10 points. You will 
+additionally report a contribution percentage for each team member. Filling out the 
+survey is a prerequisite for getting credit on the team member evaluation.
 If you are suggesting that an individual did less than 20% of the work, please
 provide some explanation. If any individual gets an average peer score 
 indicating that they did less than 10% of the work, this person will receive 
