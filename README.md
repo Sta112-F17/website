@@ -1,4 +1,4 @@
-# sta112fs-f17
+# sta112fs-f17 - Course Website
 
 Source code for course website for STA 112FS at Duke University, Fall 2017.
 
